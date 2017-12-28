@@ -9,7 +9,7 @@ import { ShareView } from './components/ShareView';
 import Checkbox from 'rc-checkbox';
 
 registerBlockType( 'blockswp/share-block', {
-	title: __( 'Social Share', 'text-domain' ),
+	title: __( 'Social Share', 'social-block' ),
 	icon: 'networking',
 	category: 'common',
 	attributes: {
@@ -17,7 +17,7 @@ registerBlockType( 'blockswp/share-block', {
         	default: 'https://via.placeholder.com/35'
         },
         shareTitle: {
-            default: __( 'Post Title', 'gb')
+            default: __( 'Post Title', 'social-block')
         },
         showCounts: {
             default: 0,
@@ -63,7 +63,7 @@ registerBlockType( 'blockswp/share-block', {
                         <div className="blockswp-share-block-settings-section">
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Facebook', 'text-domain')}
+                                    {__( 'Facebook', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showFacebook}
@@ -73,7 +73,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Twitter', 'text-domain')}
+                                    {__( 'Twitter', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showTwitter}
@@ -83,7 +83,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'WhatsApp', 'text-domain')}
+                                    {__( 'WhatsApp', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showWhatsapp}
@@ -93,7 +93,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Pintrest', 'text-domain')}
+                                    {__( 'Pintrest', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showPinterest}
@@ -103,7 +103,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'LinkedIn', 'text-domain')}
+                                    {__( 'LinkedIn', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showLinkedin}
@@ -113,7 +113,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Reddit', 'text-domain')}
+                                    {__( 'Reddit', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showReditt}
@@ -123,7 +123,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Tumblr', 'text-domain')}
+                                    {__( 'Tumblr', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showTumblr}
@@ -135,7 +135,7 @@ registerBlockType( 'blockswp/share-block', {
                         <div className="blockswp-share-block-settings-section">
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Show Icons', 'text-domain')}
+                                    {__( 'Show Icons', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showIcon}
@@ -145,7 +145,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Show Counts', 'text-domain')}
+                                    {__( 'Show Counts', 'social-block')}
                                 </label>
                                 <Checkbox
                                     checked={attributes.showCounts}
@@ -157,7 +157,7 @@ registerBlockType( 'blockswp/share-block', {
                                 <label
                                     for="blockswp-share-block-show-icon-size"
                                 >
-                                    {__('Icon Size', 'text-domain')}
+                                    {__('Icon Size', 'social-block')}
                                 </label>
                                 <input
                                     id="blockswp-share-block-show-icon-size"

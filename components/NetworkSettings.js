@@ -36,14 +36,14 @@ class NetworkSettings extends Component {
         return(
             <div>
                 <label>
-                    {__('Facebook', 'text-domain')}
+                    {__('Facebook', 'social-block')}
                 </label>
                 <Checkbox
                     checked={this.props.showFacebook}
                     onChange={this.facebookHandler}
                 />
                 <label>
-                    {__('Twitter', 'text-domain')}
+                    {__('Twitter', 'social-block')}
                 </label>
                 <Checkbox
                     checked={this.props.showTwitter}
