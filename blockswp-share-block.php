@@ -7,13 +7,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'enqueue_block_editor_assets', 'blockswp_share_block_editor_assets' );
-add_action( 'enqueue_block_assets', 'blockswp_share_block_block_assets' );
+add_action( 'plugins_loaded', 'blockswp_share_block_init' );
+
+/**
+ * Init plugin
+ *
+ * @since 0.1.0
+ */
+function blockswp_share_block_init(){
+    if ( class_exists( 'WP_Block_Type' ) ) {
+        $block = new WP_Block_Type('blockswp/share-block');
+        //$block->render_callback = 'blockswp_share_block_render_callback';
+        WP_Block_Type_Registry::get_instance()->register($block );
+        add_action( 'enqueue_block_editor_assets', 'blockswp_share_block_editor_assets' );
+        add_action( 'enqueue_block_assets', 'blockswp_share_block_block_assets' );
+    }
+
+}
+
+
+function blockswp_share_block_render_callback($atts){
+    return $atts;
+}
 
 /**
  * Enqueue the block's assets for the editor.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 function blockswp_share_block_editor_assets() {
 	wp_enqueue_script(
@@ -33,11 +53,10 @@ function blockswp_share_block_editor_assets() {
 
 
 
-
 /**
  * Enqueue the block's assets for the frontend.
  *
- * @since 1.0.0
+ * @since 0.1.0
  */
 function blockswp_share_block_block_assets() {
 	wp_enqueue_style(

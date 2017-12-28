@@ -18,7 +18,7 @@ registerBlockType( 'blockswp/share-block', {
 	category: 'common',
 	attributes: {
         shareUrl: {
-        	default: exampleImage
+        	default: 'https://via.placeholder.com/35'
         },
         shareTitle: {
             default: __( 'Post Title', 'gb')
@@ -128,8 +128,22 @@ registerBlockType( 'blockswp/share-block', {
 	},
 
     save({attributes, className}) {
-		return (
-			<p className={ className }>Social</p>
-		);
+	    const getAttr = ( attr, defaultValue ) => {
+            return attributes.hasOwnProperty( attr )
+                ? attributes[attr]
+                : defaultValue
+        };
+
+		return el(
+		    'div',
+            {
+                className: className,
+                facebook: getAttr( 'showFacebook', 'true' ),
+                twitter: getAttr( 'showTwitter', 'true' ),
+                iconSize:getAttr( 'showTwitter', 32 ),
+                showIcons: getAttr( 'showIcons', 'true' ),
+                showCounts: getAttr( 'showCounts', 'true' ),
+            }
+        )
 	},
 } );
