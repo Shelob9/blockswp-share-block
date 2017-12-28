@@ -30,6 +30,7 @@ const options = {
         '!package.json',
         '!package-lock.json',
         '!README.md',
+        '.DS_Store'
 
     ],
     rename: function(filePath) {
