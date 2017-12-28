@@ -1,0 +1,29 @@
+.blockswp-share-block-settings {
+	border: 1px solid #e2e4e7;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+.blockswp-share-block-setting {
+	margin: 0 15px 10px 0;
+}
+
+.blockswp-share-block-setting > input {
+	margin-left: 10px;
+}
+
+.blockswp-share-block {
+	color: #fff;
+}
+
+.blockswp-share-block-setting input[type=checkbox][value=false]:before {
+	display: none;
+}
+
+.blockswp-share-block div[role=button] {
+	color: #222;
+}
+
+.blockswp-share-block div[role=button] div {
+	color: #fff;
+}
