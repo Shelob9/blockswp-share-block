@@ -139,5 +139,123 @@ export const WhatsApp = (props) => {
 };
 
 
+export const Email = (props) => {
+    return(
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-email`}>
+                <EmailShareButton
+                    url={props.shareUrl}
+                    subject={props.shareTitle}
+                    body="body"
+                >
+                    {'true' === props.showIcon &&
+                    <EmailIcon
+                        size={props.iconSize}
+                        round
+                    />
+                    }
+                    {'false' === props.showIcon &&
+                        __('Share Via Email', 'text-domain')
+                    }
+                </EmailShareButton>
+            </div>
+        </div>
+    )
+};
 
+export const LinkedIn = (props) => {
+    return(
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-linkedin`}>
+                <LinkedinShareButton
+                    url={props.shareUrl}
+                    title={props.shareTitle}
+                    windowWidth={750}
+                    windowHeight={600}
+                >
+                    {'true' === props.showIcon &&
+                        <LinkedinIcon
+                            size={props.iconSize}
+                            round
+                        />
+                    }
+                    {'false' === props.showIcon &&
+                        __('Share Via LinkedIn', 'text-domain')
+                    }
+                    {'true' === props.showCounts &&
+                        <LinkedinShareCount
+                            url={props.shareUrl}
+                        >
+                            {count => count}
+                        </LinkedinShareCount>
+                    }
+                </LinkedinShareButton>
+            </div>
+        </div>
+    )
+};
+
+export const Reddit = (props) => {
+    return(
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-reddit`}>
+                <RedditShareButton
+                    url={props.shareUrl}
+                    title={props.shareTitle}
+                    windowWidth={750}
+                    windowHeight={600}
+                >
+                    {'true' === props.showIcon &&
+                        <RedditIcon
+                            size={props.iconSize}
+                            round
+                        />
+                    }
+                    {'false' === props.showIcon &&
+                        __('Share Via Redit', 'text-domain')
+                    }
+                    {'true' === props.showCounts &&
+                    <RedditShareCount
+                        url={props.shareUrl}
+                    >
+                        {count => count}
+                    </RedditShareCount>
+                    }
+                </RedditShareButton>
+            </div>
+        </div>
+    )
+};
+
+export const Tumblr = (props) => {
+    return(
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-tumblr`}>
+                <TumblrShareButton
+                    url={props.shareUrl}
+                    title={props.shareTitle}
+                    windowWidth={750}
+                    windowHeight={600}
+                >
+                    {'true' === props.showIcon &&
+                    <TumblrIcon
+                        size={props.iconSize}
+                        round
+                    />
+                    }
+                    {'false' === props.showIcon &&
+                        __('Share Via Redit', 'text-domain')
+                    }
+                    {'true' === props.showCounts &&
+                        <TumblrShareCount
+                            url={props.shareUrl}
+                        >
+                            {count => count}
+                        </TumblrShareCount>
+                    }
+                </TumblrShareButton>
+            </div>
+        </div>
+    )
+};
 

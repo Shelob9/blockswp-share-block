@@ -32,8 +32,7 @@ export default class Checkbox extends Component {
                     value={this.props.checked}
                     checked={this.props.checked}
                     onClick={this.props.toggleCheckboxChange}
-                    onChange={this.props.toggleCheckboxChange}
-                />
+                    />
             </div>
         )
     }

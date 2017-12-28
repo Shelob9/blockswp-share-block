@@ -4690,21 +4690,49 @@ var ShareView = function ShareView(attributes) {
     return wp.element.createElement(
         "div",
         { className: "wp-block-blockswp-share-blocks" },
-        'true' === attributes.showFacebook && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["a" /* Facebook */], {
+        'true' === attributes.showFacebook && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["b" /* Facebook */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        'true' === attributes.showTwitter && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["b" /* Twitter */], {
+        'true' === attributes.showTwitter && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["f" /* Twitter */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        'true' === attributes.showWhatsapp && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["c" /* WhatsApp */], {
+        'true' === attributes.showWhatsapp && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["g" /* WhatsApp */], {
+            shareUrl: attributes.shareUrl,
+            shareTitle: attributes.shareTitle,
+            showCounts: attributes.showCounts,
+            showIcon: attributes.showIcon,
+            iconSize: attributes.iconSize
+        }),
+        'true' === attributes.showEmail && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["a" /* Email */], {
+            shareUrl: attributes.shareUrl,
+            shareTitle: attributes.shareTitle,
+            showCounts: attributes.showCounts,
+            showIcon: attributes.showIcon,
+            iconSize: attributes.iconSize
+        }),
+        'true' === attributes.showLinkedin && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["c" /* LinkedIn */], {
+            shareUrl: attributes.shareUrl,
+            shareTitle: attributes.shareTitle,
+            showCounts: attributes.showCounts,
+            showIcon: attributes.showIcon,
+            iconSize: attributes.iconSize
+        }),
+        'true' === attributes.showReditt && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["d" /* Reddit */], {
+            shareUrl: attributes.shareUrl,
+            shareTitle: attributes.shareTitle,
+            showCounts: attributes.showCounts,
+            showIcon: attributes.showIcon,
+            iconSize: attributes.iconSize
+        }),
+        wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["e" /* Tumblr */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
@@ -4719,9 +4747,13 @@ var ShareView = function ShareView(attributes) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Facebook; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Twitter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return WhatsApp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Facebook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return Twitter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return WhatsApp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Email; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LinkedIn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Reddit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return Tumblr; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_share__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_share___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_share__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(3);
@@ -4852,6 +4884,132 @@ var WhatsApp = function WhatsApp(props) {
                     round: true
                 }),
                 'false' === props.showIcon && __('Share On WhatsApp', 'text-domain')
+            )
+        )
+    );
+};
+
+var Email = function Email(props) {
+    return wp.element.createElement(
+        'div',
+        { className: classNames.outer },
+        wp.element.createElement(
+            'div',
+            { className: classNames.inner + '-email' },
+            wp.element.createElement(
+                EmailShareButton,
+                {
+                    url: props.shareUrl,
+                    subject: props.shareTitle,
+                    body: 'body'
+                },
+                'true' === props.showIcon && wp.element.createElement(EmailIcon, {
+                    size: props.iconSize,
+                    round: true
+                }),
+                'false' === props.showIcon && __('Share Via Email', 'text-domain')
+            )
+        )
+    );
+};
+
+var LinkedIn = function LinkedIn(props) {
+    return wp.element.createElement(
+        'div',
+        { className: classNames.outer },
+        wp.element.createElement(
+            'div',
+            { className: classNames.inner + '-linkedin' },
+            wp.element.createElement(
+                LinkedinShareButton,
+                {
+                    url: props.shareUrl,
+                    title: props.shareTitle,
+                    windowWidth: 750,
+                    windowHeight: 600
+                },
+                'true' === props.showIcon && wp.element.createElement(LinkedinIcon, {
+                    size: props.iconSize,
+                    round: true
+                }),
+                'false' === props.showIcon && __('Share Via LinkedIn', 'text-domain'),
+                'true' === props.showCounts && wp.element.createElement(
+                    LinkedinShareCount,
+                    {
+                        url: props.shareUrl
+                    },
+                    function (count) {
+                        return count;
+                    }
+                )
+            )
+        )
+    );
+};
+
+var Reddit = function Reddit(props) {
+    return wp.element.createElement(
+        'div',
+        { className: classNames.outer },
+        wp.element.createElement(
+            'div',
+            { className: classNames.inner + '-reddit' },
+            wp.element.createElement(
+                RedditShareButton,
+                {
+                    url: props.shareUrl,
+                    title: props.shareTitle,
+                    windowWidth: 750,
+                    windowHeight: 600
+                },
+                'true' === props.showIcon && wp.element.createElement(RedditIcon, {
+                    size: props.iconSize,
+                    round: true
+                }),
+                'false' === props.showIcon && __('Share Via Redit', 'text-domain'),
+                'true' === props.showCounts && wp.element.createElement(
+                    RedditShareCount,
+                    {
+                        url: props.shareUrl
+                    },
+                    function (count) {
+                        return count;
+                    }
+                )
+            )
+        )
+    );
+};
+
+var Tumblr = function Tumblr(props) {
+    return wp.element.createElement(
+        'div',
+        { className: classNames.outer },
+        wp.element.createElement(
+            'div',
+            { className: classNames.inner + '-tumblr' },
+            wp.element.createElement(
+                TumblrShareButton,
+                {
+                    url: props.shareUrl,
+                    title: props.shareTitle,
+                    windowWidth: 750,
+                    windowHeight: 600
+                },
+                'true' === props.showIcon && wp.element.createElement(TumblrIcon, {
+                    size: props.iconSize,
+                    round: true
+                }),
+                'false' === props.showIcon && __('Share Via Redit', 'text-domain'),
+                'true' === props.showCounts && wp.element.createElement(
+                    TumblrShareCount,
+                    {
+                        url: props.shareUrl
+                    },
+                    function (count) {
+                        return count;
+                    }
+                )
             )
         )
     );

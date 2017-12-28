@@ -7,6 +7,8 @@ _If you need a working copy use [the releases](/releases/blockswp-share-block.zi
 * `npm install`
 * `npm run dev`
 
+Also, [read this](https://github.com/nygardk/react-share/blob/master/demos/demo0/Demo.jsx)
+
 ### Files
 * block.js is for the block itself.
 * components/ShareView.js is a React component used to render share buttons in front-end and in block preview.

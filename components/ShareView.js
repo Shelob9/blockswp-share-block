@@ -3,7 +3,11 @@ import { Component } from 'react';
 import {
     Facebook,
     Twitter,
-    WhatsApp
+    WhatsApp,
+    Email,
+    LinkedIn,
+    Reddit,
+    Tumblr
 } from "./SocialComponents";
 
 export const ShareView = (attributes) => {
@@ -31,6 +35,7 @@ export const ShareView = (attributes) => {
                 </Twitter>
 
             }
+
             {'true' === attributes.showWhatsapp &&
                 <WhatsApp
                     shareUrl={attributes.shareUrl}
@@ -41,6 +46,48 @@ export const ShareView = (attributes) => {
                 >
                 </WhatsApp>
             }
+
+            {'true' === attributes.showEmail &&
+                <Email
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                >
+                </Email>
+            }
+
+            {'true' === attributes.showLinkedin &&
+                <LinkedIn
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                >
+                </LinkedIn>
+            }
+
+            {'true' === attributes.showReditt &&
+                <Reddit
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                >
+                </Reddit>
+            }
+
+                <Tumblr
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                >
+                </Tumblr>
 
 
 
