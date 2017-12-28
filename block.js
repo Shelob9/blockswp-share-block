@@ -61,96 +61,98 @@ registerBlockType( 'blockswp/share-block', {
                 <BlockControls key="controls">
                     <div className="blockswp-share-block-settings">
                         <div className="blockswp-share-block-settings-section">
+                        	<strong class="blockswp-share-block-settings-section-title">Social Networks</strong>
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Facebook', 'text-domain')}
+                                    <span>{__( 'Facebook', 'text-domain')}</span>
+                                    <Checkbox
+	                                	checked={attributes.showFacebook}
+	                                    onChange={() => setAttributes({showFacebook:!attributes.showFacebook})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showFacebook}
-                                    onChange={() => setAttributes({showFacebook:!attributes.showFacebook})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Twitter', 'text-domain')}
+                                    <span>{__( 'Twitter', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showTwitter}
+	                                    onChange={() => setAttributes({showTwitter:!attributes.showTwitter})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showTwitter}
-                                    onChange={() => setAttributes({showTwitter:!attributes.showTwitter})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'WhatsApp', 'text-domain')}
+                                    <span>{__( 'WhatsApp', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showWhatsapp}
+	                                    onChange={() => setAttributes({showWhatsapp:!attributes.showWhatsapp})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showWhatsapp}
-                                    onChange={() => setAttributes({showWhatsapp:!attributes.showWhatsapp})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Pintrest', 'text-domain')}
+                                    <span>{__( 'Pintrest', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showPinterest}
+	                                    onChange={() => setAttributes({showPinterest:!attributes.showPinterest})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showPinterest}
-                                    onChange={() => setAttributes({showPinterest:!attributes.showPinterest})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'LinkedIn', 'text-domain')}
+                                    <span>{__( 'LinkedIn', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showLinkedin}
+	                                    onChange={() => setAttributes({showLinkedin:!attributes.showLinkedin})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showLinkedin}
-                                    onChange={() => setAttributes({showLinkedin:!attributes.showLinkedin})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Reddit', 'text-domain')}
+                                    <span>{__( 'Reddit', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showReditt}
+	                                    onChange={() => setAttributes({showReditt:!attributes.showReditt})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showReditt}
-                                    onChange={() => setAttributes({showReditt:!attributes.showReditt})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Tumblr', 'text-domain')}
+                                    <span>{__( 'Tumblr', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showTumblr}
+	                                    onChange={() => setAttributes({showTumblr:!attributes.showTumblr})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showTumblr}
-                                    onChange={() => setAttributes({showTumblr:!attributes.showTumblr})}
-                                />
                             </div>
                         </div>
 
                         <div className="blockswp-share-block-settings-section">
+                        	<strong class="blockswp-share-block-settings-section-title">Options</strong>
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Show Icons', 'text-domain')}
+                                    <span>{__( 'Show Icons', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showIcon}
+	                                    onChange={() => setAttributes({showIcon:!attributes.showIcon})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showIcon}
-                                    onChange={() => setAttributes({showIcon:!attributes.showIcon})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
                                 <label>
-                                    {__( 'Show Counts', 'text-domain')}
+                                    <span>{__( 'Show Counts', 'text-domain')}</span>
+                                    <Checkbox
+	                                    checked={attributes.showCounts}
+	                                    onChange={() => setAttributes({showCounts:!attributes.showCounts})}
+	                                />
                                 </label>
-                                <Checkbox
-                                    checked={attributes.showCounts}
-                                    onChange={() => setAttributes({showCounts:!attributes.showCounts})}
-                                />
                             </div>
 
                             <div className={settingsClassName}>
