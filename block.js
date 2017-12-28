@@ -38,14 +38,27 @@ registerBlockType( 'blockswp/share-block', {
         showWhatsapp : {
             default: 'true'
         },
-
+        showPinterest : {
+            default: 'true'
+        },
+        showLinkedin : {
+            default: 'true'
+        },
+        showReditt : {
+            default: 'true'
+        },
+        showTumblr : {
+            default: 'true'
+        },
+        showEmail : {
+            default: 'true'
+        }
     },
     edit({attributes, setAttributes, className, focus, id}) {
 
         return (
 			<div className={ className }>
                 {focus &&
-
                     <div className="blockswp-share-block-settings">
                         <div className="blockswp-share-block-settings-section">
                             <Checkbox
@@ -65,6 +78,39 @@ registerBlockType( 'blockswp/share-block', {
                                 label={__( 'WhatsApp', 'text-domain')}
                                 checked={attributes.showWhatsapp}
                                 toggleCheckboxChange={(event)=> setAttributes({showWhatsapp:event.target.checked.toString()})}
+                            />
+                            <Checkbox
+                                idAttr="blockswp-share-block-show-pintrest"
+                                label={__( 'Pintrest', 'text-domain')}
+                                checked={attributes.showPinterest}
+                                toggleCheckboxChange={(event)=> setAttributes({showPinterest:event.target.checked.toString()})}
+                            />
+                            <Checkbox
+                                idAttr="blockswp-share-block-show-linkedin"
+                                label={__( 'LinkedIn', 'text-domain')}
+                                checked={attributes.showLinkedin}
+                                toggleCheckboxChange={(event)=> setAttributes({showLinkedin:event.target.checked.toString()})}
+                            />
+                            <Checkbox
+                                idAttr="blockswp-share-block-show-reddit"
+                                label={__( 'Reddit', 'text-domain')}
+                                checked={attributes.showReditt}
+                                toggleCheckboxChange={(event)=> {
+                                    let newValue = event.target.checked.toString();
+                                    setAttributes({showReditt:newValue})
+                                }}
+                            />
+                            <Checkbox
+                                idAttr="blockswp-share-block-show-tumblr"
+                                label={__( 'Tumblr', 'text-domain')}
+                                checked={attributes.showTumblr}
+                                toggleCheckboxChange={(event)=> setAttributes({showTumblr:event.target.checked.toString()})}
+                            />
+                            <Checkbox
+                                idAttr="blockswp-share-block-show-email"
+                                label={__( 'Email', 'text-domain')}
+                                checked={attributes.showTumblr}
+                                toggleCheckboxChange={(event)=> setAttributes({showEmail:event.target.checked.toString()})}
                             />
                         </div>
                         <div className="blockswp-share-block-settings-section">
@@ -133,7 +179,12 @@ registerBlockType( 'blockswp/share-block', {
                 className: className,
                 showTwitter: getAttr( 'showFacebook', 'true' ),
                 showFacebook: getAttr( 'showTwitter', 'true' ),
-                iconSize:getAttr( 'showTwitter', 32 ),
+                showWhatsapp: getAttr( 'showWhatsapp', 'true' ),
+                showPinterest: getAttr( 'showPinterest', 'true' ),
+                showLinkedin: getAttr( 'showLinkedin', 'true' ),
+                showReditt: getAttr( 'showReditt', 'true' ),
+                showTumblr: getAttr( 'showTumblr', 'true' ),
+                iconSize:getAttr( 'iconSize', 32 ),
                 showIcons: getAttr( 'showIcons', 'true' ),
                 showCounts: getAttr( 'showCounts', 'true' ),
             }
