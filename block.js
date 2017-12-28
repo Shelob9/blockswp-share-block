@@ -4,10 +4,7 @@ const el = wp.element.createElement;
 
 import { Component } from 'react'
 
-import {
-    Facebook,
-    Twitter
-} from "./components/SocialComponents";
+import { ShareView } from './components/ShareView';
 
 
 import Checkbox from './components/Checkbox';
@@ -24,7 +21,7 @@ registerBlockType( 'blockswp/share-block', {
             default: __( 'Post Title', 'gb')
         },
         showCounts: {
-            default: 'true',
+            default: 'false',
         },
         showIcon: {
             default: 'true'
@@ -98,29 +95,15 @@ registerBlockType( 'blockswp/share-block', {
                     </div>
                 }
 
-                <div className="wp-block-blockswp-share-blocks">
-                    {'true' === attributes.showFacebook &&
-                        <Facebook
-                            shareUrl={attributes.shareUrl}
-                            shareTitle={attributes.shareTitle}
-                            showCounts={attributes.showCounts}
-                            showIcon={attributes.showIcon}
-                            iconSize={attributes.iconSize}
-                        >
-                        </Facebook>
-                    }
-
-                    {'true' === attributes.showTwitter &&
-                        <Twitter
-                            shareUrl={attributes.shareUrl}
-                            shareTitle={attributes.shareTitle}
-                            showCounts={attributes.showCounts}
-                            showIcon={attributes.showIcon}
-                            iconSize={attributes.iconSize}
-                        >
-                        </Twitter>
-                    }
-                </div>
+                <ShareView
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                    showFacebook={attributes.showFacebook}
+                    showTwitter={attributes.showTwitter}
+                />
 
             </div>
 		);
@@ -135,11 +118,11 @@ registerBlockType( 'blockswp/share-block', {
         };
 
 		return el(
-		    'div',
+		    'ShareView',
             {
                 className: className,
-                facebook: getAttr( 'showFacebook', 'true' ),
-                twitter: getAttr( 'showTwitter', 'true' ),
+                showTwitter: getAttr( 'showFacebook', 'true' ),
+                showFacebook: getAttr( 'showTwitter', 'true' ),
                 iconSize:getAttr( 'showTwitter', 32 ),
                 showIcons: getAttr( 'showIcons', 'true' ),
                 showCounts: getAttr( 'showCounts', 'true' ),
