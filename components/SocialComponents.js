@@ -73,7 +73,7 @@ export const Facebook = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __( 'Share On Facebook', 'text-domain')
+                        __( 'Share On Facebook', 'social-block')
                     }
 
                 </FacebookShareButton>
@@ -106,7 +106,7 @@ export const Twitter = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share On Twitter', 'text-domain')
+                        __('Share On Twitter', 'social-block')
                     }
                 </TwitterShareButton>
             </div>
@@ -130,7 +130,7 @@ export const WhatsApp = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share On WhatsApp', 'text-domain')
+                        __('Share On WhatsApp', 'social-block')
                     }
                 </WhatsappShareButton>
             </div>
@@ -155,7 +155,7 @@ export const Email = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share Via Email', 'text-domain')
+                        __('Share Via Email', 'social-block')
                     }
                 </EmailShareButton>
             </div>
@@ -180,7 +180,7 @@ export const LinkedIn = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share Via LinkedIn', 'text-domain')
+                        __('Share Via LinkedIn', 'social-block')
                     }
                     {props.showCounts &&
                         <LinkedinShareCount
@@ -212,7 +212,7 @@ export const Reddit = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share Via Redit', 'text-domain')
+                        __('Share Via Redit', 'social-block')
                     }
                     {props.showCounts &&
                         <RedditShareCount
@@ -244,7 +244,7 @@ export const Tumblr = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share Via Redit', 'text-domain')
+                        __('Share Via Redit', 'social-block')
                     }
                     {props.showCounts &&
                         <TumblrShareCount
@@ -275,7 +275,7 @@ export const Pintrest = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share Via Pintrest', 'text-domain')
+                        __('Share Via Pintrest', 'social-block')
                     }
                     {props.showCounts &&
                         <PinterestShareCount

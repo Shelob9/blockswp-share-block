@@ -9,7 +9,7 @@ import { ShareView } from './components/ShareView';
 import Checkbox from 'rc-checkbox';
 
 registerBlockType( 'blockswp/share-block', {
-	title: __( 'Social Share', 'text-domain' ),
+	title: __( 'Social Share', 'social-block' ),
 	icon: 'networking',
 	category: 'common',
 	attributes: {
@@ -17,7 +17,7 @@ registerBlockType( 'blockswp/share-block', {
         	default: 'https://via.placeholder.com/35'
         },
         shareTitle: {
-            default: __( 'Post Title', 'gb')
+            default: __( 'Post Title', 'social-block')
         },
         showCounts: {
             default: 0,
@@ -64,7 +64,7 @@ registerBlockType( 'blockswp/share-block', {
                         	<strong class="blockswp-share-block-settings-section-title">Social Networks</strong>
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'Facebook', 'text-domain')}</span>
+                                    <span>{__( 'Facebook', 'social-block')}</span>
                                     <Checkbox
 	                                	checked={attributes.showFacebook}
 	                                    onChange={() => setAttributes({showFacebook:!attributes.showFacebook})}
@@ -74,7 +74,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'Twitter', 'text-domain')}</span>
+                                    <span>{__( 'Twitter', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showTwitter}
 	                                    onChange={() => setAttributes({showTwitter:!attributes.showTwitter})}
@@ -84,7 +84,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'WhatsApp', 'text-domain')}</span>
+                                    <span>{__( 'WhatsApp', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showWhatsapp}
 	                                    onChange={() => setAttributes({showWhatsapp:!attributes.showWhatsapp})}
@@ -94,7 +94,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'Pintrest', 'text-domain')}</span>
+                                    <span>{__( 'Pintrest', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showPinterest}
 	                                    onChange={() => setAttributes({showPinterest:!attributes.showPinterest})}
@@ -104,7 +104,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'LinkedIn', 'text-domain')}</span>
+                                    <span>{__( 'LinkedIn', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showLinkedin}
 	                                    onChange={() => setAttributes({showLinkedin:!attributes.showLinkedin})}
@@ -114,7 +114,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'Reddit', 'text-domain')}</span>
+                                    <span>{__( 'Reddit', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showReditt}
 	                                    onChange={() => setAttributes({showReditt:!attributes.showReditt})}
@@ -124,7 +124,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'Tumblr', 'text-domain')}</span>
+                                    <span>{__( 'Tumblr', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showTumblr}
 	                                    onChange={() => setAttributes({showTumblr:!attributes.showTumblr})}
@@ -137,7 +137,7 @@ registerBlockType( 'blockswp/share-block', {
                         	<strong class="blockswp-share-block-settings-section-title">Options</strong>
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'Show Icons', 'text-domain')}</span>
+                                    <span>{__( 'Show Icons', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showIcon}
 	                                    onChange={() => setAttributes({showIcon:!attributes.showIcon})}
@@ -147,7 +147,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <div className={settingsClassName}>
                                 <label>
-                                    <span>{__( 'Show Counts', 'text-domain')}</span>
+                                    <span>{__( 'Show Counts', 'social-block')}</span>
                                     <Checkbox
 	                                    checked={attributes.showCounts}
 	                                    onChange={() => setAttributes({showCounts:!attributes.showCounts})}
@@ -159,7 +159,7 @@ registerBlockType( 'blockswp/share-block', {
                                 <label
                                     for="blockswp-share-block-show-icon-size"
                                 >
-                                    {__('Icon Size', 'text-domain')}
+                                    {__('Icon Size', 'social-block')}
                                 </label>
                                 <input
                                     id="blockswp-share-block-show-icon-size"

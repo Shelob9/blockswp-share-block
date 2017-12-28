@@ -4835,7 +4835,7 @@ var Facebook = function Facebook(props) {
                     round: true,
                     className: classNames.icon + '-facebook'
                 }),
-                !props.showIcon && __('Share On Facebook', 'text-domain')
+                !props.showIcon && __('Share On Facebook', 'social-block')
             ),
             props.showCounts && wp.element.createElement(
                 FacebookShareCount,
@@ -4867,7 +4867,7 @@ var Twitter = function Twitter(props) {
                     size: props.iconSize,
                     round: true
                 }),
-                !props.showIcon && __('Share On Twitter', 'text-domain')
+                !props.showIcon && __('Share On Twitter', 'social-block')
             )
         )
     );
@@ -4891,7 +4891,7 @@ var WhatsApp = function WhatsApp(props) {
                     size: props.iconSize,
                     round: true
                 }),
-                !props.showIcon && __('Share On WhatsApp', 'text-domain')
+                !props.showIcon && __('Share On WhatsApp', 'social-block')
             )
         )
     );
@@ -4915,7 +4915,7 @@ var Email = function Email(props) {
                     size: props.iconSize,
                     round: true
                 }),
-                !props.showIcon && __('Share Via Email', 'text-domain')
+                !props.showIcon && __('Share Via Email', 'social-block')
             )
         )
     );
@@ -4940,7 +4940,7 @@ var LinkedIn = function LinkedIn(props) {
                     size: props.iconSize,
                     round: true
                 }),
-                !props.showIcon && __('Share Via LinkedIn', 'text-domain'),
+                !props.showIcon && __('Share Via LinkedIn', 'social-block'),
                 props.showCounts && wp.element.createElement(
                     LinkedinShareCount,
                     {
@@ -4974,7 +4974,7 @@ var Reddit = function Reddit(props) {
                     size: props.iconSize,
                     round: true
                 }),
-                !props.showIcon && __('Share Via Redit', 'text-domain'),
+                !props.showIcon && __('Share Via Redit', 'social-block'),
                 props.showCounts && wp.element.createElement(
                     RedditShareCount,
                     {
@@ -5008,7 +5008,7 @@ var Tumblr = function Tumblr(props) {
                     size: props.iconSize,
                     round: true
                 }),
-                !props.showIcon && __('Share Via Redit', 'text-domain'),
+                !props.showIcon && __('Share Via Redit', 'social-block'),
                 props.showCounts && wp.element.createElement(
                     TumblrShareCount,
                     {
@@ -5041,7 +5041,7 @@ var Pintrest = function Pintrest(props) {
                     size: props.iconSize,
                     round: true
                 }),
-                !props.showIcon && __('Share Via Pintrest', 'text-domain'),
+                !props.showIcon && __('Share Via Pintrest', 'social-block'),
                 props.showCounts && wp.element.createElement(
                     PinterestShareCount,
                     {
