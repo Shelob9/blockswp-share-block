@@ -4703,6 +4703,13 @@ var ShareView = function ShareView(attributes) {
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
+        }),
+        'true' === attributes.showWhatsapp && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__SocialComponents__["c" /* WhatsApp */], {
+            shareUrl: attributes.shareUrl,
+            shareTitle: attributes.shareTitle,
+            showCounts: attributes.showCounts,
+            showIcon: attributes.showIcon,
+            iconSize: attributes.iconSize
         })
     );
 };
@@ -4714,6 +4721,7 @@ var ShareView = function ShareView(attributes) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Facebook; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Twitter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return WhatsApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_share__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_share___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_share__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(3);
@@ -4763,32 +4771,37 @@ var LivejournalIcon = Object(__WEBPACK_IMPORTED_MODULE_0_react_share__["generate
 
 var exampleImage = 'https://via.placeholder.com/350x150';
 
+var classNames = {
+    outer: 'blockswp-share-block',
+    inner: 'blockswp-share-block-'
+};
 
 
 var Facebook = function Facebook(props) {
     return wp.element.createElement(
         'div',
-        { className: 'blockswp-share-block' },
+        { className: classNames.outer },
         wp.element.createElement(
             'div',
-            { className: 'blockswp-share-block-facebook' },
+            { className: classNames.inner + '-facebook' },
             wp.element.createElement(
                 FacebookShareButton,
                 {
                     url: props.shareUrl,
-                    quote: props.shareTitle,
-                    className: 'blockswp-share-block-facebook__share-button' },
+                    quote: props.shareTitle
+                },
                 'true' === props.showIcon && wp.element.createElement(FacebookIcon, {
                     size: props.iconSize,
-                    round: true
+                    round: true,
+                    className: classNames.icon + '-facebook'
                 }),
                 'false' === props.showIcon && __('Share On Facebook', 'text-domain')
             ),
             'true' === props.showCounts && wp.element.createElement(
                 FacebookShareCount,
                 {
-                    url: props.shareUrl,
-                    className: 'blockswp-share-block-facebook__share-count' },
+                    url: props.shareUrl
+                },
                 function (count) {
                     return count;
                 }
@@ -4800,21 +4813,45 @@ var Facebook = function Facebook(props) {
 var Twitter = function Twitter(props) {
     return wp.element.createElement(
         'div',
-        { className: 'blockswp-share-block' },
+        { className: classNames.outer },
         wp.element.createElement(
             'div',
-            { className: 'blockswp-share-block-twitter' },
+            { className: classNames.inner + '-twitter' },
             wp.element.createElement(
                 TwitterShareButton,
                 {
                     url: props.shareUrl,
-                    title: props.shareTitle,
-                    className: 'blockswp-share-block-twitter__share-button' },
+                    title: props.shareTitle
+                },
                 'true' === props.showIcon && wp.element.createElement(TwitterIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share On Facebook', 'text-domain')
+                'false' === props.showIcon && __('Share On Twitter', 'text-domain')
+            )
+        )
+    );
+};
+
+var WhatsApp = function WhatsApp(props) {
+    return wp.element.createElement(
+        'div',
+        { className: classNames.outer },
+        wp.element.createElement(
+            'div',
+            { className: classNames.inner + '-whatsapp' },
+            wp.element.createElement(
+                WhatsappShareButton,
+                {
+                    url: props.shareUrl,
+                    title: props.shareTitle,
+                    separator: ':: '
+                },
+                'true' === props.showIcon && wp.element.createElement(WhatsappIcon, {
+                    size: props.iconSize,
+                    round: true
+                }),
+                'false' === props.showIcon && __('Share On WhatsApp', 'text-domain')
             )
         )
     );

@@ -51,33 +51,40 @@ const LivejournalIcon = generateShareIcon('livejournal');
 
 const exampleImage = 'https://via.placeholder.com/350x150';
 
+const classNames = {
+    outer: 'blockswp-share-block',
+    inner: 'blockswp-share-block-',
+}
 import { Component } from 'react'
 
 export const Facebook = (props) => {
     return (
-        <div className="blockswp-share-block">
-            <div className="blockswp-share-block-facebook">
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-facebook`}>
                 <FacebookShareButton
                     url={props.shareUrl}
                     quote={props.shareTitle}
-                    className="blockswp-share-block-facebook__share-button">
+                >
                     {'true' === props.showIcon &&
-                    <FacebookIcon
-                        size={props.iconSize}
-                        round
-                    />
+                        <FacebookIcon
+                            size={props.iconSize}
+                            round
+                            className={`${classNames.icon}-facebook`}
+                        />
                     }
                     {'false' === props.showIcon &&
-                    __( 'Share On Facebook', 'text-domain')
+                        __( 'Share On Facebook', 'text-domain')
                     }
+
                 </FacebookShareButton>
                 {'true' === props.showCounts &&
-                <FacebookShareCount
-                    url={props.shareUrl}
-                    className="blockswp-share-block-facebook__share-count">
-                    {count => count}
-                </FacebookShareCount>
+                    <FacebookShareCount
+                        url={props.shareUrl}
+                    >
+                        {count => count}
+                    </FacebookShareCount>
                 }
+
 
             </div>
         </div>
@@ -86,12 +93,12 @@ export const Facebook = (props) => {
 
 export const Twitter = (props) => {
     return(
-        <div className="blockswp-share-block">
-            <div className="blockswp-share-block-twitter">
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-twitter`}>
                 <TwitterShareButton
                     url={props.shareUrl}
                     title={props.shareTitle}
-                    className="blockswp-share-block-twitter__share-button">
+                >
                     {'true' === props.showIcon &&
                         <TwitterIcon
                             size={props.iconSize}
@@ -99,12 +106,38 @@ export const Twitter = (props) => {
                         />
                     }
                     {'false' === props.showIcon &&
-                        __('Share On Facebook', 'text-domain')
+                        __('Share On Twitter', 'text-domain')
                     }
                 </TwitterShareButton>
             </div>
         </div>
     )
 };
+
+export const WhatsApp = (props) => {
+    return(
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-whatsapp`}>
+                <WhatsappShareButton
+                    url={props.shareUrl}
+                    title={props.shareTitle}
+                    separator=":: "
+                >
+                    {'true' === props.showIcon &&
+                        <WhatsappIcon
+                            size={props.iconSize}
+                            round
+                        />
+                    }
+                    {'false' === props.showIcon &&
+                    __('Share On WhatsApp', 'text-domain')
+                    }
+                </WhatsappShareButton>
+            </div>
+        </div>
+    )
+};
+
+
 
 

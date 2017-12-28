@@ -35,6 +35,10 @@ registerBlockType( 'blockswp/share-block', {
         showTwitter: {
             default: 'true'
         },
+        showWhatsapp : {
+            default: 'true'
+        },
+
     },
     edit({attributes, setAttributes, className, focus, id}) {
 
@@ -55,6 +59,12 @@ registerBlockType( 'blockswp/share-block', {
                                 label={__( 'Twitter', 'text-domain')}
                                 checked={attributes.showTwitter}
                                 toggleCheckboxChange={(event)=> setAttributes({showTwitter:event.target.checked.toString()})}
+                            />
+                            <Checkbox
+                                idAttr="blockswp-share-block-show-whatsapp"
+                                label={__( 'WhatsApp', 'text-domain')}
+                                checked={attributes.showWhatsapp}
+                                toggleCheckboxChange={(event)=> setAttributes({showWhatsapp:event.target.checked.toString()})}
                             />
                         </div>
                         <div className="blockswp-share-block-settings-section">

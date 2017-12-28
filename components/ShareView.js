@@ -2,7 +2,8 @@ const { __ } = wp.i18n;
 import { Component } from 'react';
 import {
     Facebook,
-    Twitter
+    Twitter,
+    WhatsApp
 } from "./SocialComponents";
 
 export const ShareView = (attributes) => {
@@ -30,6 +31,18 @@ export const ShareView = (attributes) => {
                 </Twitter>
 
             }
+            {'true' === attributes.showWhatsapp &&
+                <WhatsApp
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                >
+                </WhatsApp>
+            }
+
+
 
         </div>
     )
