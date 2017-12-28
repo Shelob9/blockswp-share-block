@@ -4830,14 +4830,14 @@ var Facebook = function Facebook(props) {
                     url: props.shareUrl,
                     quote: props.shareTitle
                 },
-                'true' === props.showIcon && wp.element.createElement(FacebookIcon, {
+                props.showIcon && wp.element.createElement(FacebookIcon, {
                     size: props.iconSize,
                     round: true,
                     className: classNames.icon + '-facebook'
                 }),
-                'false' === props.showIcon && __('Share On Facebook', 'text-domain')
+                !props.showIcon && __('Share On Facebook', 'text-domain')
             ),
-            'true' === props.showCounts && wp.element.createElement(
+            props.showCounts && wp.element.createElement(
                 FacebookShareCount,
                 {
                     url: props.shareUrl
@@ -4863,11 +4863,11 @@ var Twitter = function Twitter(props) {
                     url: props.shareUrl,
                     title: props.shareTitle
                 },
-                'true' === props.showIcon && wp.element.createElement(TwitterIcon, {
+                props.showIcon && wp.element.createElement(TwitterIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share On Twitter', 'text-domain')
+                !props.showIcon && __('Share On Twitter', 'text-domain')
             )
         )
     );
@@ -4887,11 +4887,11 @@ var WhatsApp = function WhatsApp(props) {
                     title: props.shareTitle,
                     separator: ':: '
                 },
-                'true' === props.showIcon && wp.element.createElement(WhatsappIcon, {
+                props.showIcon && wp.element.createElement(WhatsappIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share On WhatsApp', 'text-domain')
+                !props.showIcon && __('Share On WhatsApp', 'text-domain')
             )
         )
     );
@@ -4911,11 +4911,11 @@ var Email = function Email(props) {
                     subject: props.shareTitle,
                     body: 'body'
                 },
-                'true' === props.showIcon && wp.element.createElement(EmailIcon, {
+                props.showIcon && wp.element.createElement(EmailIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share Via Email', 'text-domain')
+                !props.showIcon && __('Share Via Email', 'text-domain')
             )
         )
     );
@@ -4936,12 +4936,12 @@ var LinkedIn = function LinkedIn(props) {
                     windowWidth: 750,
                     windowHeight: 600
                 },
-                'true' === props.showIcon && wp.element.createElement(LinkedinIcon, {
+                props.showIcon && wp.element.createElement(LinkedinIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share Via LinkedIn', 'text-domain'),
-                'true' === props.showCounts && wp.element.createElement(
+                !props.showIcon && __('Share Via LinkedIn', 'text-domain'),
+                props.showCounts && wp.element.createElement(
                     LinkedinShareCount,
                     {
                         url: props.shareUrl
@@ -4970,12 +4970,12 @@ var Reddit = function Reddit(props) {
                     windowWidth: 750,
                     windowHeight: 600
                 },
-                'true' === props.showIcon && wp.element.createElement(RedditIcon, {
+                props.showIcon && wp.element.createElement(RedditIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share Via Redit', 'text-domain'),
-                'true' === props.showCounts && wp.element.createElement(
+                !props.showIcon && __('Share Via Redit', 'text-domain'),
+                props.showCounts && wp.element.createElement(
                     RedditShareCount,
                     {
                         url: props.shareUrl
@@ -5004,12 +5004,12 @@ var Tumblr = function Tumblr(props) {
                     windowWidth: 750,
                     windowHeight: 600
                 },
-                'true' === props.showIcon && wp.element.createElement(TumblrIcon, {
+                props.showIcon && wp.element.createElement(TumblrIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share Via Redit', 'text-domain'),
-                'true' === props.showCounts && wp.element.createElement(
+                !props.showIcon && __('Share Via Redit', 'text-domain'),
+                props.showCounts && wp.element.createElement(
                     TumblrShareCount,
                     {
                         url: props.shareUrl
@@ -5037,12 +5037,12 @@ var Pintrest = function Pintrest(props) {
                     windowWidth: 750,
                     windowHeight: 600
                 },
-                'true' === props.showIcon && wp.element.createElement(PinterestIcon, {
+                props.showIcon && wp.element.createElement(PinterestIcon, {
                     size: props.iconSize,
                     round: true
                 }),
-                'false' === props.showIcon && __('Share Via Pintrest', 'text-domain'),
-                'true' === props.showCounts && wp.element.createElement(
+                !props.showIcon && __('Share Via Pintrest', 'text-domain'),
+                props.showCounts && wp.element.createElement(
                     PinterestShareCount,
                     {
                         url: props.shareUrl

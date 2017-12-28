@@ -20,10 +20,10 @@ registerBlockType( 'blockswp/share-block', {
             default: __( 'Post Title', 'gb')
         },
         showCounts: {
-            default: 'false',
+            default: 0,
         },
         showIcon: {
-            default: 'true'
+            default: 1,
         },
         iconSize :{
             default: 32
@@ -128,24 +128,29 @@ registerBlockType( 'blockswp/share-block', {
                                     checked={attributes.showTumblr}
                                     onChange={() => setAttributes({showTumblr:!attributes.showTumblr})}
                                 />
-                                <p>{attributes.showTumblr}</p>
                             </div>
                         </div>
 
                         <div className="blockswp-share-block-settings-section">
-                            <Checkbox
-                                idAttr="blockswp-share-block-show-icon"
-                                label={__( 'Show Icon', 'text-domain')}
-                                checked={attributes.showIcon}
-                                toggleCheckboxChange={(event)=> setAttributes({showIcon:event.target.checked.toString()})}
-                            />
+                            <div className={settingsClassName}>
+                                <label>
+                                    {__( 'Show Icons', 'text-domain')}
+                                </label>
+                                <Checkbox
+                                    checked={attributes.showIcon}
+                                    onChange={() => setAttributes({showIcon:!attributes.showIcon})}
+                                />
+                            </div>
 
-                            <Checkbox
-                                idAttr="blockswp-share-block-show-counts"
-                                label={__( 'Show Counts', 'text-domain')}
-                                checked={attributes.showIcon}
-                                toggleCheckboxChange={(event)=> setAttributes({showCounts:event.target.checked.toString()})}
-                            />
+                            <div className={settingsClassName}>
+                                <label>
+                                    {__( 'Show Counts', 'text-domain')}
+                                </label>
+                                <Checkbox
+                                    checked={attributes.showCounts}
+                                    onChange={() => setAttributes({showCounts:!attributes.showCounts})}
+                                />
+                            </div>
 
                             <div className={settingsClassName}>
                                 <label

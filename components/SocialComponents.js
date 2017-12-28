@@ -65,19 +65,19 @@ export const Facebook = (props) => {
                     url={props.shareUrl}
                     quote={props.shareTitle}
                 >
-                    {'true' === props.showIcon &&
+                    {props.showIcon &&
                         <FacebookIcon
                             size={props.iconSize}
                             round
                             className={`${classNames.icon}-facebook`}
                         />
                     }
-                    {'false' === props.showIcon &&
+                    {! props.showIcon &&
                         __( 'Share On Facebook', 'text-domain')
                     }
 
                 </FacebookShareButton>
-                {'true' === props.showCounts &&
+                {props.showCounts &&
                     <FacebookShareCount
                         url={props.shareUrl}
                     >
@@ -99,13 +99,13 @@ export const Twitter = (props) => {
                     url={props.shareUrl}
                     title={props.shareTitle}
                 >
-                    {'true' === props.showIcon &&
+                    {props.showIcon &&
                         <TwitterIcon
                             size={props.iconSize}
                             round
                         />
                     }
-                    {'false' === props.showIcon &&
+                    {! props.showIcon &&
                         __('Share On Twitter', 'text-domain')
                     }
                 </TwitterShareButton>
@@ -123,14 +123,14 @@ export const WhatsApp = (props) => {
                     title={props.shareTitle}
                     separator=":: "
                 >
-                    {'true' === props.showIcon &&
+                    {props.showIcon &&
                         <WhatsappIcon
                             size={props.iconSize}
                             round
                         />
                     }
-                    {'false' === props.showIcon &&
-                    __('Share On WhatsApp', 'text-domain')
+                    {! props.showIcon &&
+                        __('Share On WhatsApp', 'text-domain')
                     }
                 </WhatsappShareButton>
             </div>
@@ -148,13 +148,13 @@ export const Email = (props) => {
                     subject={props.shareTitle}
                     body="body"
                 >
-                    {'true' === props.showIcon &&
-                    <EmailIcon
-                        size={props.iconSize}
-                        round
-                    />
+                    {props.showIcon &&
+                        <EmailIcon
+                            size={props.iconSize}
+                            round
+                        />
                     }
-                    {'false' === props.showIcon &&
+                    {! props.showIcon &&
                         __('Share Via Email', 'text-domain')
                     }
                 </EmailShareButton>
@@ -173,16 +173,16 @@ export const LinkedIn = (props) => {
                     windowWidth={750}
                     windowHeight={600}
                 >
-                    {'true' === props.showIcon &&
+                    {props.showIcon &&
                         <LinkedinIcon
                             size={props.iconSize}
                             round
                         />
                     }
-                    {'false' === props.showIcon &&
+                    {! props.showIcon &&
                         __('Share Via LinkedIn', 'text-domain')
                     }
-                    {'true' === props.showCounts &&
+                    {props.showCounts &&
                         <LinkedinShareCount
                             url={props.shareUrl}
                         >
@@ -205,21 +205,21 @@ export const Reddit = (props) => {
                     windowWidth={750}
                     windowHeight={600}
                 >
-                    {'true' === props.showIcon &&
+                    {props.showIcon &&
                         <RedditIcon
                             size={props.iconSize}
                             round
                         />
                     }
-                    {'false' === props.showIcon &&
+                    {! props.showIcon &&
                         __('Share Via Redit', 'text-domain')
                     }
-                    {'true' === props.showCounts &&
-                    <RedditShareCount
-                        url={props.shareUrl}
-                    >
-                        {count => count}
-                    </RedditShareCount>
+                    {props.showCounts &&
+                        <RedditShareCount
+                            url={props.shareUrl}
+                        >
+                            {count => count}
+                        </RedditShareCount>
                     }
                 </RedditShareButton>
             </div>
@@ -237,16 +237,16 @@ export const Tumblr = (props) => {
                     windowWidth={750}
                     windowHeight={600}
                 >
-                    {'true' === props.showIcon &&
-                    <TumblrIcon
-                        size={props.iconSize}
-                        round
-                    />
+                    {props.showIcon &&
+                        <TumblrIcon
+                            size={props.iconSize}
+                            round
+                        />
                     }
-                    {'false' === props.showIcon &&
+                    {! props.showIcon &&
                         __('Share Via Redit', 'text-domain')
                     }
-                    {'true' === props.showCounts &&
+                    {props.showCounts &&
                         <TumblrShareCount
                             url={props.shareUrl}
                         >
@@ -268,16 +268,16 @@ export const Pintrest = (props) => {
                     windowWidth={750}
                     windowHeight={600}
                 >
-                    {'true' === props.showIcon &&
+                    { props.showIcon &&
                         <PinterestIcon
                             size={props.iconSize}
                             round
                         />
                     }
-                    {'false' === props.showIcon &&
+                    {! props.showIcon &&
                         __('Share Via Pintrest', 'text-domain')
                     }
-                    {'true' === props.showCounts &&
+                    {props.showCounts &&
                         <PinterestShareCount
                             url={props.shareUrl}
                         >
