@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const el = wp.element.createElement;
-
+const BlockControls = wp.blocks.BlockControls;
 import { Component } from 'react'
 
 import { ShareView } from './components/ShareView';
@@ -58,6 +58,7 @@ registerBlockType( 'blockswp/share-block', {
         return (
 			<div className={ className }>
                 {focus &&
+                <BlockControls key="controls">
                     <div className="blockswp-share-block-settings">
                         <div className="blockswp-share-block-settings-section">
                             <div className={settingsClassName}>
@@ -173,6 +174,8 @@ registerBlockType( 'blockswp/share-block', {
 
                         </div>
                     </div>
+                </BlockControls>
+
                 }
 
                 <ShareView
