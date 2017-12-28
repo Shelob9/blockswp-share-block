@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
             let attrName = item.name;
             if( 0 === item.name.indexOf('show') ){
                 let split = item.name.toLowerCase().split('show');
-                attrName = `show${ucFirst(split[1])}`
-                item.value = item.value.toString();
+                attrName = `show${ucFirst(split[1])}`;
+                item.value = + item.value;
             }else if( 'class' === item.name ){
                  attrName = 'className';
             }else if ( 'iconsize' === item.name ){
@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
             if( 'showIcons' === attrName ){
                 attrName = 'showIcon';
+                item.value = + item.value;
             }
             attributes[attrName]=item.value;
         });
 
         attributes.shareUrl = BLOCKSWP_SHARE_FRONT.post.data.link;
         attributes.shareTitle = BLOCKSWP_SHARE_FRONT.post.data.title.rendered;
-
         BlocksWPShareBlockFront(attributes,element);
 
     });

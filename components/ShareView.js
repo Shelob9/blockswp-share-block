@@ -7,13 +7,14 @@ import {
     Email,
     LinkedIn,
     Reddit,
-    Tumblr
+    Tumblr,
+    Pintrest
 } from "./SocialComponents";
 
 export const ShareView = (attributes) => {
     return(
         <div className="wp-block-blockswp-share-blocks">
-            {'true' === attributes.showFacebook &&
+            {attributes.showFacebook &&
                 <Facebook
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -24,7 +25,7 @@ export const ShareView = (attributes) => {
                 </Facebook>
             }
 
-            {'true' === attributes.showTwitter &&
+            {attributes.showTwitter &&
                 <Twitter
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -36,7 +37,7 @@ export const ShareView = (attributes) => {
 
             }
 
-            {'true' === attributes.showWhatsapp &&
+            {attributes.showWhatsapp &&
                 <WhatsApp
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -47,18 +48,8 @@ export const ShareView = (attributes) => {
                 </WhatsApp>
             }
 
-            {'true' === attributes.showEmail &&
-                <Email
-                    shareUrl={attributes.shareUrl}
-                    shareTitle={attributes.shareTitle}
-                    showCounts={attributes.showCounts}
-                    showIcon={attributes.showIcon}
-                    iconSize={attributes.iconSize}
-                >
-                </Email>
-            }
 
-            {'true' === attributes.showLinkedin &&
+            {attributes.showLinkedin &&
                 <LinkedIn
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -69,7 +60,7 @@ export const ShareView = (attributes) => {
                 </LinkedIn>
             }
 
-            {'true' === attributes.showReditt &&
+            {attributes.showReditt &&
                 <Reddit
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -80,6 +71,7 @@ export const ShareView = (attributes) => {
                 </Reddit>
             }
 
+            {attributes.showTumblr &&
                 <Tumblr
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -88,8 +80,28 @@ export const ShareView = (attributes) => {
                     iconSize={attributes.iconSize}
                 >
                 </Tumblr>
+            }
+            {attributes.showPinterest &&
+                <Pintrest
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                >
+                </Pintrest>
+            }
 
-
+            {attributes.showEmail &&
+                <Email
+                    shareUrl={attributes.shareUrl}
+                    shareTitle={attributes.shareTitle}
+                    showCounts={attributes.showCounts}
+                    showIcon={attributes.showIcon}
+                    iconSize={attributes.iconSize}
+                >
+                </Email>
+            }
 
         </div>
     )
