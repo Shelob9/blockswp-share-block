@@ -5,6 +5,7 @@ Plugin URI: https://BlocksWP.com/social-block
 Description: Social share block for the WordPress Gutenberg block editor
 Author: BlocksWP.com
 Version: 0.1.0
+Text Domain: share-block
 Author URI: https://BlocksWP.com
 */
 if ( ! defined( 'ABSPATH' ) ) {
