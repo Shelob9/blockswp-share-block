@@ -9,6 +9,7 @@
     "babel-preset-env": "^1.6.0",
     "cross-env": "^5.0.1",
     "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-share": "^1.18.1",
     "webpack": "^3.1.0"
   },

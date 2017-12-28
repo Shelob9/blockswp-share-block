@@ -118,7 +118,7 @@ registerBlockType( 'blockswp/share-block', {
         };
 
 		return el(
-		    'ShareView',
+		    'div',
             {
                 className: className,
                 showTwitter: getAttr( 'showFacebook', 'true' ),

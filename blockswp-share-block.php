@@ -17,7 +17,6 @@ add_action( 'plugins_loaded', 'blockswp_share_block_init' );
 function blockswp_share_block_init(){
     if ( class_exists( 'WP_Block_Type' ) ) {
         $block = new WP_Block_Type('blockswp/share-block');
-        //$block->render_callback = 'blockswp_share_block_render_callback';
         WP_Block_Type_Registry::get_instance()->register($block );
         add_action( 'enqueue_block_editor_assets', 'blockswp_share_block_editor_assets' );
         add_action( 'enqueue_block_assets', 'blockswp_share_block_block_assets' );
@@ -25,10 +24,6 @@ function blockswp_share_block_init(){
 
 }
 
-
-function blockswp_share_block_render_callback($atts){
-    return $atts;
-}
 
 /**
  * Enqueue the block's assets for the editor.
@@ -65,4 +60,27 @@ function blockswp_share_block_block_assets() {
 		array( 'wp-blocks' ),
 		filemtime( plugin_dir_path( __FILE__ ) . 'editor.css' )
 	);
+
+    wp_enqueue_script(
+        'blockswp-share-front',
+        plugins_url( 'front.build.js', __FILE__ ),
+        array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+        filemtime( plugin_dir_path( __FILE__ ) . 'front.js' )
+    );
+
+    $post = null;
+    if( get_post( ) ){
+        $r = new WP_REST_Request();
+        $r->set_attributes( ['id' => get_post()->ID ] );
+        $r->set_param( 'id', get_post()->ID  );
+        $post = rest_ensure_response(
+            ( new WP_REST_Posts_Controller(get_post_type( get_post() ) ) )
+                ->get_item($r)
+        );
+
+    }
+    wp_localize_script('blockswp-share-front', 'BLOCKSWP_SHARE_FRONT', array(
+            'post' => $post
+        )
+    );
 }
