@@ -259,3 +259,33 @@ export const Tumblr = (props) => {
     )
 };
 
+export const Pintrest = (props) => {
+    return(
+        <div className={classNames.outer}>
+            <div className={`${classNames.inner}-reddit`}>
+                <PinterestShareButton
+                    url={props.shareUrl}
+                    windowWidth={750}
+                    windowHeight={600}
+                >
+                    {'true' === props.showIcon &&
+                        <PinterestIcon
+                            size={props.iconSize}
+                            round
+                        />
+                    }
+                    {'false' === props.showIcon &&
+                        __('Share Via Pintrest', 'text-domain')
+                    }
+                    {'true' === props.showCounts &&
+                        <PinterestShareCount
+                            url={props.shareUrl}
+                        >
+                            {count => count}
+                        </PinterestShareCount>
+                    }
+                </PinterestShareButton>
+            </div>
+        </div>
+    )
+};

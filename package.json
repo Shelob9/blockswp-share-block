@@ -10,6 +10,7 @@
     "copy-webpack-plugin": "^4.3.1",
     "cross-env": "^5.0.1",
     "path": "^0.12.7",
+    "rc-checkbox": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-share": "^1.18.1",
