@@ -1,8 +1,12 @@
 <?php
 /**
- * Plugin Name: Share block by BlocksWP
- */
-
+Plugin Name: SocialBlock by BlocksWP.com
+Plugin URI: https://BlocksWP.com/social-block
+Description: Social share block for the WordPress Gutenberg block editor
+Author: BlocksWP.com
+Version: 0.1.0
+Author URI: https://BlocksWP.com
+*/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
