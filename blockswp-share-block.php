@@ -50,7 +50,7 @@ function blockswp_share_block_editor_assets() {
 		'blockswp-share-block',
 		plugins_url( 'block.build.js', __FILE__ ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
-		filemtime( plugin_dir_path( __FILE__ ) . 'block.js' )
+        WP_BLOCKS_SHARE_BLOCK
 	);
 
 	wp_enqueue_style(
