@@ -17,22 +17,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if( 0 === item.name.indexOf('show') ){
                 let split = item.name.toLowerCase().split('show');
                 attrName = `show${ucFirst(split[1])}`;
-                item.value = + item.value;
             }else if( 'class' === item.name ){
                  attrName = 'className';
+
+
             }else if ( 'iconsize' === item.name ){
                 attrName = 'iconSize';
                 if( 'true' === item.value ){
                     item.value = 32;
                 }
                 item.value = item.value.toString();
-            }
 
-            if( 'showIcons' === attrName ){
-                attrName = 'showIcon';
-                item.value = + item.value;
             }
-            attributes[attrName]=item.value;
+            attributes[attrName] = item.value;
         });
 
         attributes.shareUrl = BLOCKSWP_SHARE_FRONT.post.data.link;

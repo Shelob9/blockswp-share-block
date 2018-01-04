@@ -32,6 +32,63 @@ add_action( 'plugins_loaded', 'blockswp_share_block_init' );
 function blockswp_share_block_init(){
     if ( class_exists( 'WP_Block_Type' ) ) {
         $block = new WP_Block_Type('blockswp/share-block');
+        $block->attributes = array(
+            'shareUrl' => array(
+                'default' => get_post() ? get_permalink(get_post() ) : '',
+                'type' => 'string'
+            ),
+            'shareTitle' => array(
+                'default' => get_post() ? get_post()->post_title : '',
+                'type' => 'string'
+            ),
+            'showCounts' => array(
+                'default' => 0,
+                'type' => 'integer'
+            ),
+            'showIcon' => array(
+                'default' => 1,
+                'type' => 'integer'
+            ),
+            'iconSize' => array(
+                'default' => 32,
+                'type' => 'integer'
+            ),
+            'showFacebook' => array(
+                'default' => 1,
+                'type' => 'integer'
+            ),
+            'showTwitter' => array(
+                'default' => 1,
+            ),
+            'showWhatsapp' => array(
+                'default' => 1,
+                'type' => 'integer'
+            ),
+            'showPinterest' => array(
+                'default' => 1,
+                'type' => 'integer'
+            ),
+            'showLinkedin' => array(
+                'default' => 1,
+                'type' => 'integer'
+            ),
+            'showReditt' => array(
+                'default' => 1,
+                'type' => 'integer'
+            ),
+            'showTumblr' => array(
+                'default' => 1,
+                'type' => 'integer'
+            ),
+            'showEmail' => array(
+                'default' => 1,
+                'type' => 'integer'
+            )
+
+
+        );
+
+        $block->render_callback = 'blockswp_share_render_callback';
         WP_Block_Type_Registry::get_instance()->register($block );
         add_action( 'enqueue_block_editor_assets', 'blockswp_share_block_editor_assets' );
         add_action( 'enqueue_block_assets', 'blockswp_share_block_block_assets' );
@@ -39,6 +96,24 @@ function blockswp_share_block_init(){
 
 }
 
+/**
+ * Render callback for block
+ *
+ * @since 1.0.0
+ *
+ * @param array $atts
+ *
+ * @return string
+ */
+function blockswp_share_render_callback($atts){
+
+    $attributes_string = '';
+    $att_pattern = '%s="%s" ';
+    foreach ( $atts as $att => $value ){
+        $attributes_string .= sprintf( $att_pattern, esc_attr($att), esc_attr($value) );
+    }
+    return sprintf('<div class="wp-block-blockswp-share-block" %s></div>', $attributes_string );
+}
 
 /**
  * Enqueue the block's assets for the editor.

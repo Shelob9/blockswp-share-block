@@ -1,5 +1,4 @@
 const { __ } = wp.i18n;
-import { Component } from 'react';
 import {
     Facebook,
     Twitter,
@@ -14,7 +13,7 @@ import {
 export const ShareView = (attributes) => {
     return(
         <div className="wp-block-blockswp-share-blocks">
-            {attributes.showFacebook &&
+            {1 == attributes.showFacebook &&
                 <Facebook
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -25,7 +24,7 @@ export const ShareView = (attributes) => {
                 </Facebook>
             }
 
-            {attributes.showTwitter &&
+            {1 == attributes.showTwitter &&
                 <Twitter
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -37,7 +36,7 @@ export const ShareView = (attributes) => {
 
             }
 
-            {attributes.showWhatsapp &&
+            {1 == attributes.showWhatsapp &&
                 <WhatsApp
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -49,7 +48,7 @@ export const ShareView = (attributes) => {
             }
 
 
-            {attributes.showLinkedin &&
+            {1 == attributes.showLinkedin &&
                 <LinkedIn
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -60,7 +59,7 @@ export const ShareView = (attributes) => {
                 </LinkedIn>
             }
 
-            {attributes.showReditt &&
+            {1 == attributes.showReditt &&
                 <Reddit
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -71,7 +70,7 @@ export const ShareView = (attributes) => {
                 </Reddit>
             }
 
-            {attributes.showTumblr &&
+            {1 == attributes.showTumblr &&
                 <Tumblr
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -81,7 +80,8 @@ export const ShareView = (attributes) => {
                 >
                 </Tumblr>
             }
-            {attributes.showPinterest &&
+
+            {1 == attributes.showPinterest &&
                 <Pintrest
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}
@@ -92,7 +92,7 @@ export const ShareView = (attributes) => {
                 </Pintrest>
             }
 
-            {attributes.showEmail &&
+            {1 == attributes.showEmail &&
                 <Email
                     shareUrl={attributes.shareUrl}
                     shareTitle={attributes.shareTitle}

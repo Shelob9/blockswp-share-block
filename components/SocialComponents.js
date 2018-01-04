@@ -54,8 +54,7 @@ const exampleImage = 'https://via.placeholder.com/350x150';
 const classNames = {
     outer: 'blockswp-share-block',
     inner: 'blockswp-share-block-',
-}
-import { Component } from 'react'
+};
 
 export const Facebook = (props) => {
     return (
@@ -72,12 +71,14 @@ export const Facebook = (props) => {
                             className={`${classNames.icon}-facebook`}
                         />
                     }
+
                     {! props.showIcon &&
                         __( 'Share On Facebook', 'social-block')
                     }
 
                 </FacebookShareButton>
-                {props.showCounts &&
+
+                {1 == props.showCounts &&
                     <FacebookShareCount
                         url={props.shareUrl}
                     >
@@ -105,6 +106,7 @@ export const Twitter = (props) => {
                             round
                         />
                     }
+
                     {! props.showIcon &&
                         __('Share On Twitter', 'social-block')
                     }
@@ -182,7 +184,8 @@ export const LinkedIn = (props) => {
                     {! props.showIcon &&
                         __('Share Via LinkedIn', 'social-block')
                     }
-                    {props.showCounts &&
+
+                    {1 == props.showCounts &&
                         <LinkedinShareCount
                             url={props.shareUrl}
                         >
@@ -214,7 +217,8 @@ export const Reddit = (props) => {
                     {! props.showIcon &&
                         __('Share Via Redit', 'social-block')
                     }
-                    {props.showCounts &&
+
+                    {1 ==props.showCounts &&
                         <RedditShareCount
                             url={props.shareUrl}
                         >
@@ -244,9 +248,10 @@ export const Tumblr = (props) => {
                         />
                     }
                     {! props.showIcon &&
-                        __('Share Via Redit', 'social-block')
+                        __('Share Via Tumblr', 'social-block')
                     }
-                    {props.showCounts &&
+
+                    {1 == props.showCounts &&
                         <TumblrShareCount
                             url={props.shareUrl}
                         >
@@ -262,7 +267,7 @@ export const Tumblr = (props) => {
 export const Pintrest = (props) => {
     return(
         <div className={classNames.outer}>
-            <div className={`${classNames.inner}-reddit`}>
+            <div className={`${classNames.inner}-pintrest`}>
                 <PinterestShareButton
                     url={props.shareUrl}
                     windowWidth={750}
@@ -277,7 +282,8 @@ export const Pintrest = (props) => {
                     {! props.showIcon &&
                         __('Share Via Pintrest', 'social-block')
                     }
-                    {props.showCounts &&
+
+                    {1 == props.showCounts &&
                         <PinterestShareCount
                             url={props.shareUrl}
                         >
