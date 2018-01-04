@@ -4,7 +4,7 @@ Plugin Name: SocialBlock by BlocksWP.com
 Plugin URI: https://BlocksWP.com/social-block
 Description: Social share block for the WordPress Gutenberg block editor
 Author: BlocksWP.com
-Version: 1.0.0-b-2
+Version: 1.0.0
 Text Domain: share-block
 Author URI: https://BlocksWP.com
 */
@@ -12,20 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Version number
- *
- * @since 1.0.0
- */
-define( 'WP_BLOCKS_SHARE_BLOCK', '1.0.0-b-2' );
-
-/**
- * Make plugin go
- */
 add_action( 'plugins_loaded', 'blockswp_share_block_init' );
 
 /**
- * Init plugin if WP_Block_Type exits
+ * Init plugin
  *
  * @since 0.1.0
  */
@@ -57,7 +47,7 @@ function blockswp_share_block_editor_assets() {
 		'blockswp-share-block-editor', // Handle.
 		plugins_url( 'editor.css', __FILE__ ), // Block editor CSS.
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-        WP_BLOCKS_SHARE_BLOCK
+		filemtime( plugin_dir_path( __FILE__ ) . 'editor.css' ) // filemtime — Gets file modification time.
 	);
 }
 
@@ -73,14 +63,14 @@ function blockswp_share_block_block_assets() {
 		'blockswp-share-block-frontend',
 		plugins_url( 'style.css', __FILE__ ),
 		array( 'wp-blocks' ),
-        WP_BLOCKS_SHARE_BLOCK
-    );
+		filemtime( plugin_dir_path( __FILE__ ) . 'editor.css' )
+	);
 
     wp_enqueue_script(
         'blockswp-share-front',
         plugins_url( 'front.build.js', __FILE__ ),
         array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
-        WP_BLOCKS_SHARE_BLOCK
+        filemtime( plugin_dir_path( __FILE__ ) . 'front.js' )
     );
 
     $post = null;

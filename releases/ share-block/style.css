@@ -1,0 +1,14 @@
+.wp-block-blockswp-share-block {
+	margin: 1.5em 0;
+}
+
+.blockswp-share-blocks,
+.blockswp-share-block-setting {
+	display: inline;
+}
+
+.blockswp-share-block {
+	color: #111;
+	display: inline-flex;
+	padding: 4px;
+}

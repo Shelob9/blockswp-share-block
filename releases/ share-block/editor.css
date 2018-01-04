@@ -1,0 +1,99 @@
+div[data-type="blockswp/share-block"] .editor-block-contextual-toolbar .editor-block-toolbar {
+	background: #fff;
+	bottom: -1px;
+	position: absolute;
+	width: 100%;
+}
+
+div[data-type="blockswp/share-block"] .editor-block-contextual-toolbar .editor-block-toolbar > div:first-child {
+	width: 100%;
+}
+
+.blockswp-share-block-settings-section {
+    border-right: 1px solid #e2e4e7;
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    padding: 15px;
+    width: 58%;
+}
+
+.blockswp-share-block-settings-section:first-child .blockswp-share-block-setting {
+    width: 20%;
+}
+
+.blockswp-share-block-settings-section:nth-child(2) {	
+	background: #f9f9f9;
+	border: none;
+	width: 42%;
+}
+
+.blockswp-share-block-settings {
+	width: 100%;
+}
+
+.blockswp-share-block-settings-section-title {
+	display: block;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
+.blockswp-share-block-setting {
+	float: left;
+	margin: 10px 15px 0 0;
+}
+
+.blockswp-share-block-setting:last-child {
+	margin-right: 0;
+}
+
+.blockswp-share-block-setting label {
+	display: block;
+    font-size: 13px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    line-height: 1;
+}
+
+.blockswp-share-block-setting label span {
+	display: block;
+}
+
+.blockswp-share-block-setting input[type=checkbox] {
+	height: 25px;
+	margin-top: 5px;
+	text-align: center;
+	width: 25px;
+}
+
+.blockswp-share-block-setting input[type=checkbox]:before {
+    font-size: 30px;
+    margin: -2px -5px;
+}
+
+.blockswp-share-block-setting input[type=number] {
+	margin-top: 5px;
+}
+
+.blockswp-share-block {
+	color: #fff;
+}
+
+.blockswp-share-block-setting input[type=checkbox][value=false]:before {
+	display: none;
+}
+
+.blockswp-share-block div[role=button] {
+	color: #222;
+}
+
+.blockswp-share-block div[role=button] > div:not(.SocialMediaShareCount) {
+	color: #fff;
+	width: auto !important;
+	height: auto !important;
+}
+
+.SocialMediaShareCount {
+	color: #222;
+	text-align: center;
+}
