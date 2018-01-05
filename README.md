@@ -1,8 +1,10 @@
 # ShareBlock
-Gutenberg social share block. Beta AF.
+Gutenberg social share block for WordPress.
 
-_If you need a working copy use [the releases](/releases/blockswp-share-block.zip)_ 
+_Are you looking for a working copy of this plugin?_ Use [this link for a built ZIP file](/releases/share-block.zip)_ See the rest of this readme if you're a developer and want to build plugin yourself.
+
 ## Development
+Make sure you have [npm](https://npmjs.com) installed first.
 
 * `npm install`
 * `npm run dev`
@@ -14,6 +16,7 @@ Also, [read this](https://github.com/nygardk/react-share/blob/master/demos/demo0
 * components/ShareView.js is a React component used to render share buttons in front-end and in block preview.
 * components/SocialComponents.js has one React component per network.
 * components/Checkbox.js is a checkbox component.
+* components/NetworkSettings.js is a React component for most of the settings
 * front-end.js is used to mount the front-end React app. 
 * editor.css is used for editor and front-end CSS
 * style.css is used for front-end CSS
