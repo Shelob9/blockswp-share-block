@@ -46,14 +46,29 @@ function blockswp_share_block_init(){
     }
 
     register_rest_field( 'post', 'blockswp_share', array(
-        'get_callback' => function($post_array, $meta_key, $rest_request) {
-            $post = get_post( $post_array[ 'id'] ) ? get_post(  get_post( $post_array[ 'id'] ) )
-                : $rest_request[ 'id' ] && get_post( $rest_request[ 'id' ] ) ? get_post( $rest_request[ 'id' ] )
-                : null;
-
-            return $post ? wp_json_encode( blockswp_share_block_post_to_attributes( $post ) ) : wp_json_encode(blockswp_share_block_get_attributes());
-        }
+        'get_callback' => 'blockswp_share_block_extra_rest_field_callback'
     ) );
+
+}
+
+/**
+ * Callback for the extra REST API field blockswp_share we use for combining all meta as one json encoded string
+ *
+ * @since 1.0.0
+ *
+ * @param array $post_array
+ * @param string $meta_key
+ * @param WP_REST_Request $rest_request
+ *
+ * @return false|string
+ */
+function blockswp_share_block_extra_rest_field_callback($post_array, $meta_key, $rest_request) {
+
+    $post = get_post($post_array['id']) ? get_post(get_post($post_array['id']))
+        : $rest_request['id'] && get_post($rest_request['id']) ? get_post($rest_request['id'])
+            : null;
+
+    return $post ? wp_json_encode(blockswp_share_block_post_to_attributes($post)) : wp_json_encode(blockswp_share_block_get_attributes());
 
 }
 
