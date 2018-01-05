@@ -1,6 +1,6 @@
 <?php
 /**
-Plugin Name: SocialBlock by BlocksWP.com
+Plugin Name: Share Block by BlocksWP.com
 Plugin URI: https://BlocksWP.com/social-block
 Description: Social share block for the WordPress Gutenberg block editor
 Author: BlocksWP.com
