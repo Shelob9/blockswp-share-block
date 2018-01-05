@@ -34,9 +34,11 @@ function blockswp_share_block_init(){
         $block = new WP_Block_Type('blockswp/share-block');
         WP_Block_Type_Registry::get_instance()->register($block );
         add_action( 'enqueue_block_editor_assets', 'blockswp_share_block_editor_assets' );
-        add_action( 'enqueue_block_assets', 'blockswp_share_block_block_assets' );
+        add_action('enqueue_block_assets', 'blockswp_share_block_block_assets');
+
     }
 
+    //Register each attribute as a meta field, to be shown in REST API response
     foreach( blockswp_share_block_get_attributes() as $attribute => $args ){
         register_meta( 'post', blockswp_share_block_prefix_attribute($attribute), array(
             'show_in_rest' => true,
@@ -45,6 +47,7 @@ function blockswp_share_block_init(){
         ) );
     }
 
+    //Add one REST API field with all of the settings
     register_rest_field( 'post', 'blockswp_share', array(
         'get_callback' => 'blockswp_share_block_extra_rest_field_callback'
     ) );
@@ -68,6 +71,7 @@ function blockswp_share_block_extra_rest_field_callback($post_array, $meta_key, 
         : $rest_request['id'] && get_post($rest_request['id']) ? get_post($rest_request['id'])
             : null;
 
+    //@TODO probably remove this encoding - keep in mind JSON.parse is used in front-end.js for this data
     return $post ? wp_json_encode(blockswp_share_block_post_to_attributes($post)) : wp_json_encode(blockswp_share_block_get_attributes());
 
 }
@@ -124,29 +128,32 @@ function blockswp_share_block_block_assets() {
         WP_BLOCKS_SHARE_BLOCK
     );
 
-    wp_enqueue_script(
+    wp_register_script(
         'blockswp-share-front',
         plugins_url( 'front.build.js', __FILE__ ),
         array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
         WP_BLOCKS_SHARE_BLOCK
     );
 
-    $post = null;
-    if( get_post( ) ){
-        $r = new WP_REST_Request();
-        $r->set_attributes( ['id' => get_post()->ID ] );
-        $r->set_param( 'id', get_post()->ID  );
-        $post = rest_ensure_response(
-            ( new WP_REST_Posts_Controller(get_post_type( get_post() ) ) )
-                ->get_item($r)
+    if ( ! is_admin() ) {
+        wp_enqueue_script( 'blockswp-share-front' );
+        $post = null;
+        if (get_post()) {
+            $r = new WP_REST_Request();
+            $r->set_attributes(['id' => get_post()->ID]);
+            $r->set_param('id', get_post()->ID);
+            $post = rest_ensure_response(
+                (new WP_REST_Posts_Controller(get_post_type(get_post())))
+                    ->get_item($r)
+            );
+
+        }
+
+        wp_localize_script('blockswp-share-front', 'BLOCKSWP_SHARE_FRONT', array(
+                'post' => $post,
+            )
         );
-
     }
-
-    wp_localize_script('blockswp-share-front', 'BLOCKSWP_SHARE_FRONT', array(
-            'post' => $post,
-        )
-    );
 }
 
 /**
@@ -166,12 +173,23 @@ function blockswp_share_block_post_to_attributes( WP_Post $post ){
 
     foreach ( $attributes as $attribute => $args ){
         $meta_key = blockswp_share_block_prefix_attribute( $attribute );
-        $prepared_attributes[esc_attr($attribute) ]=  $post->$meta_key || 0 == $post->$meta_key ?   $post->$meta_key : $args[ 'default' ];
+        $value =  $post->$meta_key || 0 == $post->$meta_key ?   $post->$meta_key : $args[ 'default' ];
+        if( 'boolean' === $args[ 'type' ] ) {
+            $value = rest_sanitize_boolean($value);
+        }elseif( 'iconSize' === $attribute ){
+           $value = 32 <= absint( $value ) && 128 >= absint($value) ? intval($value) : 32;
+        } elseif ( 'shareUrl' === $attribute ){
+            $value = esc_url( $value );
+        } else{
+            $value = esc_attr($value);
+        }
 
+        $prepared_attributes[esc_attr($attribute) ]= $value;
 
     }
 
     return $prepared_attributes;
+
 }
 
 /**
@@ -197,48 +215,48 @@ function blockswp_share_block_get_attributes(WP_Post $post = null ) {
             'type' => 'string'
         ),
         'showCounts' => array(
-            'default' => 0,
-            'type' => 'integer'
+            'default' => false,
+            'type' => 'boolean'
         ),
         'showIcon' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         ),
         'iconSize' => array(
             'default' => 32,
             'type' => 'integer'
         ),
         'showFacebook' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         ),
         'showTwitter' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         ),
         'showWhatsapp' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         ),
         'showPinterest' => array(
             'default' => 1,
-            'type' => 'integer'
+            'type' => 'boolean'
         ),
         'showLinkedin' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         ),
         'showReditt' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         ),
         'showTumblr' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         ),
         'showEmail' => array(
-            'default' => 1,
-            'type' => 'integer'
+            'default' => true,
+            'type' => 'boolean'
         )
     );
     return $attributes;

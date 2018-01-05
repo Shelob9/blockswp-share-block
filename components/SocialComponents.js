@@ -78,7 +78,7 @@ export const Facebook = (props) => {
 
                 </FacebookShareButton>
 
-                {1 == props.showCounts &&
+                {props.showCounts &&
                     <FacebookShareCount
                         url={props.shareUrl}
                     >
@@ -185,7 +185,7 @@ export const LinkedIn = (props) => {
                         __('Share Via LinkedIn', 'social-block')
                     }
 
-                    {1 == props.showCounts &&
+                    { props.showCounts &&
                         <LinkedinShareCount
                             url={props.shareUrl}
                         >
@@ -218,7 +218,7 @@ export const Reddit = (props) => {
                         __('Share Via Redit', 'social-block')
                     }
 
-                    {1 ==props.showCounts &&
+                    {props.showCounts &&
                         <RedditShareCount
                             url={props.shareUrl}
                         >
@@ -251,7 +251,7 @@ export const Tumblr = (props) => {
                         __('Share Via Tumblr', 'social-block')
                     }
 
-                    {1 == props.showCounts &&
+                    { props.showCounts &&
                         <TumblrShareCount
                             url={props.shareUrl}
                         >
@@ -283,7 +283,7 @@ export const Pintrest = (props) => {
                         __('Share Via Pintrest', 'social-block')
                     }
 
-                    {1 == props.showCounts &&
+                    {props.showCounts &&
                         <PinterestShareCount
                             url={props.shareUrl}
                         >

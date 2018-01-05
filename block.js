@@ -26,13 +26,13 @@ registerBlockType( 'blockswp/share-block', {
             meta:   'blockswp_share_shareTitle'
         },
         showCounts: {
-            default: 0,
+            default: false,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showCounts'
         },
         showIcon: {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showIcon'
@@ -44,49 +44,49 @@ registerBlockType( 'blockswp/share-block', {
             meta:   'blockswp_share_iconSize'
         },
         showFacebook: {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showFacebook'
         },
         showTwitter: {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showTwitter'
         },
         showWhatsapp : {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showWhatsapp'
         },
         showPinterest : {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showPinterest'
         },
         showLinkedin : {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showLinkedin'
         },
         showReditt : {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showReditt'
         },
         showTumblr : {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showTumblr'
         },
         showEmail : {
-            default: 1,
+            default: true,
             type:   'integer',
             source: 'meta',
             meta:   'blockswp_share_showEmail'
@@ -96,12 +96,7 @@ registerBlockType( 'blockswp/share-block', {
         const createChangeHandler = (attr) => {
               return function (event) {
                   let newValue = {};
-                  if( 1 === attributes[attr]){
-                      newValue[attr] = 0;
-                  }else{
-                      newValue[attr] = 1;
-                  }
-
+                  newValue[attr] = ! attributes[attr];
                   setAttributes(newValue)
               }
         };

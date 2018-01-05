@@ -4687,56 +4687,56 @@ var ShareView = function ShareView(attributes) {
     return wp.element.createElement(
         "div",
         { className: "wp-block-blockswp-share-blocks" },
-        1 == attributes.showFacebook && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["b" /* Facebook */], {
+        attributes.showFacebook && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["b" /* Facebook */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        1 == attributes.showTwitter && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["g" /* Twitter */], {
+        attributes.showTwitter && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["g" /* Twitter */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        1 == attributes.showWhatsapp && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["h" /* WhatsApp */], {
+        attributes.showWhatsapp && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["h" /* WhatsApp */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        1 == attributes.showLinkedin && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["c" /* LinkedIn */], {
+        attributes.showLinkedin && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["c" /* LinkedIn */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        1 == attributes.showReditt && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["e" /* Reddit */], {
+        attributes.showReditt && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["e" /* Reddit */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        1 == attributes.showTumblr && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["f" /* Tumblr */], {
+        attributes.showTumblr && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["f" /* Tumblr */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        1 == attributes.showPinterest && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["d" /* Pintrest */], {
+        attributes.showPinterest && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["d" /* Pintrest */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
             showIcon: attributes.showIcon,
             iconSize: attributes.iconSize
         }),
-        1 == attributes.showEmail && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["a" /* Email */], {
+        attributes.showEmail && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__SocialComponents__["a" /* Email */], {
             shareUrl: attributes.shareUrl,
             shareTitle: attributes.shareTitle,
             showCounts: attributes.showCounts,
@@ -4831,7 +4831,7 @@ var Facebook = function Facebook(props) {
                 }),
                 !props.showIcon && __('Share On Facebook', 'social-block')
             ),
-            1 == props.showCounts && wp.element.createElement(
+            props.showCounts && wp.element.createElement(
                 FacebookShareCount,
                 {
                     url: props.shareUrl
@@ -4935,7 +4935,7 @@ var LinkedIn = function LinkedIn(props) {
                     round: true
                 }),
                 !props.showIcon && __('Share Via LinkedIn', 'social-block'),
-                1 == props.showCounts && wp.element.createElement(
+                props.showCounts && wp.element.createElement(
                     LinkedinShareCount,
                     {
                         url: props.shareUrl
@@ -4969,7 +4969,7 @@ var Reddit = function Reddit(props) {
                     round: true
                 }),
                 !props.showIcon && __('Share Via Redit', 'social-block'),
-                1 == props.showCounts && wp.element.createElement(
+                props.showCounts && wp.element.createElement(
                     RedditShareCount,
                     {
                         url: props.shareUrl
@@ -5003,7 +5003,7 @@ var Tumblr = function Tumblr(props) {
                     round: true
                 }),
                 !props.showIcon && __('Share Via Tumblr', 'social-block'),
-                1 == props.showCounts && wp.element.createElement(
+                props.showCounts && wp.element.createElement(
                     TumblrShareCount,
                     {
                         url: props.shareUrl
@@ -5036,7 +5036,7 @@ var Pintrest = function Pintrest(props) {
                     round: true
                 }),
                 !props.showIcon && __('Share Via Pintrest', 'social-block'),
-                1 == props.showCounts && wp.element.createElement(
+                props.showCounts && wp.element.createElement(
                     PinterestShareCount,
                     {
                         url: props.shareUrl
@@ -9494,7 +9494,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
             var attributes = JSON.parse(BLOCKSWP_SHARE_FRONT.post.data.blockswp_share);
             attributes.shareUrl = BLOCKSWP_SHARE_FRONT.post.data.link;
             attributes.shareTitle = BLOCKSWP_SHARE_FRONT.post.data.title.rendered;
-            BlocksWPShareBlockFront(attributes, element);
+            new BlocksWPShareBlockFront(attributes, element);
         });
     }
 });

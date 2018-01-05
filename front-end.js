@@ -16,7 +16,7 @@ document.addEventListener( 'DOMContentLoaded', function(event) {
             let attributes = JSON.parse(BLOCKSWP_SHARE_FRONT.post.data.blockswp_share);
             attributes.shareUrl = BLOCKSWP_SHARE_FRONT.post.data.link;
             attributes.shareTitle = BLOCKSWP_SHARE_FRONT.post.data.title.rendered;
-            BlocksWPShareBlockFront(attributes, element);
+            new BlocksWPShareBlockFront(attributes, element);
         });
     }
 
