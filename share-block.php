@@ -7,9 +7,9 @@ Author: BlocksWP.com
 Version: 1.0.0
 Text Domain: share-block
 Author URI: https://BlocksWP.com
-*/
+ */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
 /**
@@ -86,7 +86,7 @@ function blockswp_share_block_extra_rest_field_callback($post_array, $meta_key, 
  * @param string $attribute Attribute name
  * @return string
  */
-function blockswp_share_block_prefix_attribute($attribute): string {
+function blockswp_share_block_prefix_attribute($attribute){
     $attribute = 'blockswp_share_' . $attribute;
     return $attribute;
 }
@@ -98,19 +98,19 @@ function blockswp_share_block_prefix_attribute($attribute): string {
  * @since 0.1.0
  */
 function blockswp_share_block_editor_assets() {
-	wp_enqueue_script(
-		'blockswp-share-block',
-		plugins_url( 'block.build.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+    wp_enqueue_script(
+        'blockswp-share-block',
+        plugins_url( 'block.build.js', __FILE__ ),
+        array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
         WP_BLOCKS_SHARE_BLOCK
-	);
+    );
 
-	wp_enqueue_style(
-		'blockswp-share-block-editor', // Handle.
-		plugins_url( 'editor.css', __FILE__ ), // Block editor CSS.
-		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
+    wp_enqueue_style(
+        'blockswp-share-block-editor', // Handle.
+        plugins_url( 'editor.css', __FILE__ ), // Block editor CSS.
+        array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
         WP_BLOCKS_SHARE_BLOCK
-	);
+    );
 }
 
 
@@ -121,10 +121,10 @@ function blockswp_share_block_editor_assets() {
  * @since 0.1.0
  */
 function blockswp_share_block_block_assets() {
-	wp_enqueue_style(
-		'blockswp-share-block-frontend',
-		plugins_url( 'style.css', __FILE__ ),
-		array( 'wp-blocks' ),
+    wp_enqueue_style(
+        'blockswp-share-block-frontend',
+        plugins_url( 'style.css', __FILE__ ),
+        array( 'wp-blocks' ),
         WP_BLOCKS_SHARE_BLOCK
     );
 
@@ -140,12 +140,10 @@ function blockswp_share_block_block_assets() {
         $post = null;
         if (get_post()) {
             $r = new WP_REST_Request();
-            $r->set_attributes(['id' => get_post()->ID]);
+            $r->set_attributes( array( 'id' => get_post()->ID ) );
             $r->set_param('id', get_post()->ID);
-            $post = rest_ensure_response(
-                (new WP_REST_Posts_Controller(get_post_type(get_post())))
-                    ->get_item($r)
-            );
+            $controller =  new WP_REST_Posts_Controller(get_post_type(get_post()));
+            $post = rest_ensure_response($controller->get_item($r));
 
         }
 
@@ -177,7 +175,7 @@ function blockswp_share_block_post_to_attributes( WP_Post $post ){
         if( 'boolean' === $args[ 'type' ] ) {
             $value = rest_sanitize_boolean($value);
         }elseif( 'iconSize' === $attribute ){
-           $value = 32 <= absint( $value ) && 128 >= absint($value) ? intval($value) : 32;
+            $value = 32 <= absint( $value ) && 128 >= absint($value) ? intval($value) : 32;
         } elseif ( 'shareUrl' === $attribute ){
             $value = esc_url( $value );
         } else{
