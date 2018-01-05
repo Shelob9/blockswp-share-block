@@ -14,43 +14,82 @@ registerBlockType( 'blockswp/share-block', {
 	category: 'common',
 	attributes: {
         shareUrl: {
-        	default: 'https://via.placeholder.com/35'
+        	default: 'https://via.placeholder.com/35',
+            type:   'string',
+            source: 'meta',
+            meta:   'blockswp_share_shareUrl'
         },
         shareTitle: {
-            default: __( 'Post Title', 'social-block')
+            default: __( 'Post Title', 'social-block' ),
+            type:   'string',
+            source: 'meta',
+            meta:   'blockswp_share_shareTitle'
         },
         showCounts: {
             default: 0,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showCounts'
         },
         showIcon: {
             default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showIcon'
         },
         iconSize :{
-            default: 32
+            default: 32,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_iconSize'
         },
         showFacebook: {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showFacebook'
         },
         showTwitter: {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showTwitter'
         },
         showWhatsapp : {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showWhatsapp'
         },
         showPinterest : {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showPinterest'
         },
         showLinkedin : {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showLinkedin'
         },
         showReditt : {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showReditt'
         },
         showTumblr : {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showTumblr'
         },
         showEmail : {
-            default: 1
+            default: 1,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showEmail'
         }
     },
     edit({attributes, setAttributes, className, focus, id}) {
@@ -159,7 +198,7 @@ registerBlockType( 'blockswp/share-block', {
                                 <input
                                     id="blockswp-share-block-show-icon-size"
                                     type="number"
-                                    value={attributes.iconSize}
+                                    value={attributes.iconSize ? attributes.iconSize : 32 }
                                     min="32"
                                     max="96"
                                     step="32"
@@ -195,8 +234,11 @@ registerBlockType( 'blockswp/share-block', {
 		);
 
 	},
-
     save({attributes, className}) {
-	    return null;
+	    return (
+	        <div
+                className={className}
+            />
+        );
 	},
 } );

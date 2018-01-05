@@ -32,88 +32,46 @@ add_action( 'plugins_loaded', 'blockswp_share_block_init' );
 function blockswp_share_block_init(){
     if ( class_exists( 'WP_Block_Type' ) ) {
         $block = new WP_Block_Type('blockswp/share-block');
-        $block->attributes = array(
-            'shareUrl' => array(
-                'default' => get_post() ? get_permalink(get_post() ) : '',
-                'type' => 'string'
-            ),
-            'shareTitle' => array(
-                'default' => get_post() ? get_post()->post_title : '',
-                'type' => 'string'
-            ),
-            'showCounts' => array(
-                'default' => 0,
-                'type' => 'integer'
-            ),
-            'showIcon' => array(
-                'default' => 1,
-                'type' => 'integer'
-            ),
-            'iconSize' => array(
-                'default' => 32,
-                'type' => 'integer'
-            ),
-            'showFacebook' => array(
-                'default' => 1,
-                'type' => 'integer'
-            ),
-            'showTwitter' => array(
-                'default' => 1,
-            ),
-            'showWhatsapp' => array(
-                'default' => 1,
-                'type' => 'integer'
-            ),
-            'showPinterest' => array(
-                'default' => 1,
-                'type' => 'integer'
-            ),
-            'showLinkedin' => array(
-                'default' => 1,
-                'type' => 'integer'
-            ),
-            'showReditt' => array(
-                'default' => 1,
-                'type' => 'integer'
-            ),
-            'showTumblr' => array(
-                'default' => 1,
-                'type' => 'integer'
-            ),
-            'showEmail' => array(
-                'default' => 1,
-                'type' => 'integer'
-            )
-
-
-        );
-
-        $block->render_callback = 'blockswp_share_render_callback';
         WP_Block_Type_Registry::get_instance()->register($block );
         add_action( 'enqueue_block_editor_assets', 'blockswp_share_block_editor_assets' );
         add_action( 'enqueue_block_assets', 'blockswp_share_block_block_assets' );
     }
 
+    foreach( blockswp_share_block_get_attributes() as $attribute => $args ){
+        register_meta( 'post', blockswp_share_block_prefix_attribute($attribute), array(
+            'show_in_rest' => true,
+            'single' => true,
+            'type' =>  $args[ 'type' ],
+        ) );
+    }
+
+    register_rest_field( 'post', 'blockswp_share', array(
+        'get_callback' => function($post_array, $meta_key, $rest_request) {
+            $post = get_post( $post_array[ 'id'] ) ? get_post(  get_post( $post_array[ 'id'] ) )
+                : $rest_request[ 'id' ] && get_post( $rest_request[ 'id' ] ) ? get_post( $rest_request[ 'id' ] )
+                : null;
+
+            return $post ? wp_json_encode( blockswp_share_block_post_to_attributes( $post ) ) : wp_json_encode(blockswp_share_block_get_attributes());
+        }
+    ) );
+
 }
 
 /**
- * Render callback for block
+ * Prefix an attribute name with namespace
+ *
+ * "shareTitle" - how's its addressed in React, becomes blockswp_share_shareTitle, how it's addressed in meta API.
  *
  * @since 1.0.0
  *
- * @param array $atts
- *
+ * @param string $attribute Attribute name
  * @return string
  */
-function blockswp_share_render_callback($atts){
-
-    $attributes_string = '';
-    $att_pattern = '%s="%s" ';
-    foreach ( $atts as $att => $value ){
-        $attributes_string .= sprintf( $att_pattern, esc_attr($att), esc_attr($value) );
-    }
-    return sprintf('<div class="wp-block-blockswp-share-block" %s></div>', $attributes_string );
+function blockswp_share_block_prefix_attribute($attribute): string {
+    $attribute = 'blockswp_share_' . $attribute;
+    return $attribute;
 }
+
 
 /**
  * Enqueue the block's assets for the editor.
@@ -169,8 +127,104 @@ function blockswp_share_block_block_assets() {
         );
 
     }
+
     wp_localize_script('blockswp-share-front', 'BLOCKSWP_SHARE_FRONT', array(
-            'post' => $post
+            'post' => $post,
         )
     );
+}
+
+/**
+ * Given a WP_Post, get all saved (or default if not saved) attributes
+ *
+ * @since 1.0.0
+ *
+ * @param WP_Post $post Post object to use for shareUrl and shareTitle attributes from.
+ * @return array
+ */
+function blockswp_share_block_post_to_attributes( WP_Post $post ){
+
+
+    $attributes = blockswp_share_block_get_attributes($post);
+
+    $prepared_attributes = array();
+
+    foreach ( $attributes as $attribute => $args ){
+        $meta_key = blockswp_share_block_prefix_attribute( $attribute );
+        $prepared_attributes[esc_attr($attribute) ]=  $post->$meta_key || 0 == $post->$meta_key ?   $post->$meta_key : $args[ 'default' ];
+
+
+    }
+
+    return $prepared_attributes;
+}
+
+/**
+ * Get all of our attributes with defaults
+ *
+ * @since 1.0.0
+ *
+ * @param WP_Post|null $post Optional Post object to use for shareUrl and shareTitle attributes from. Default is null, which will attempt to use get_post()
+ * @return array
+ */
+function blockswp_share_block_get_attributes(WP_Post $post = null ) {
+    if( ! $post ){
+        $post = get_post();
+    }
+
+    $attributes = array(
+        'shareUrl' => array(
+            'default' => $post ? get_permalink($post) : '',
+            'type' => 'string'
+        ),
+        'shareTitle' => array(
+            'default' => $post ? $post->post_title : '',
+            'type' => 'string'
+        ),
+        'showCounts' => array(
+            'default' => 0,
+            'type' => 'integer'
+        ),
+        'showIcon' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'iconSize' => array(
+            'default' => 32,
+            'type' => 'integer'
+        ),
+        'showFacebook' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'showTwitter' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'showWhatsapp' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'showPinterest' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'showLinkedin' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'showReditt' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'showTumblr' => array(
+            'default' => 1,
+            'type' => 'integer'
+        ),
+        'showEmail' => array(
+            'default' => 1,
+            'type' => 'integer'
+        )
+    );
+    return $attributes;
 }
