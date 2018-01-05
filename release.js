@@ -39,11 +39,11 @@ const options = {
 
 };
 
-const buildPath = `./build/${package.name}/`;
+const buildPath = `./build/share-block/`;
 copy('./', buildPath, options)
     .then(function(results) {
     console.info('Copied ' + results.length + ' files');
-        zipdir(buildPath,{ saveTo: './releases/blockswp-share-block.zip' },function (err, buffer) {
+        zipdir(buildPath,{ saveTo: './releases/share-block.zip' },function (err, buffer) {
             //hi
         })
         rimraf('./build', () =>{})
