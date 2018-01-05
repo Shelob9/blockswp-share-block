@@ -6,7 +6,7 @@ import { Component } from 'react'
 
 import { ShareView } from './components/ShareView';
 
-import Checkbox from 'rc-checkbox';
+import Checkbox from './components/Checkbox';
 
 registerBlockType( 'blockswp/share-block', {
 	title: __( 'Social Share', 'social-block' ),
@@ -14,47 +14,92 @@ registerBlockType( 'blockswp/share-block', {
 	category: 'common',
 	attributes: {
         shareUrl: {
-        	default: 'https://via.placeholder.com/35'
+        	default: 'https://via.placeholder.com/35',
+            type:   'string',
+            source: 'meta',
+            meta:   'blockswp_share_shareUrl'
         },
         shareTitle: {
-            default: __( 'Post Title', 'social-block')
+            default: __( 'Post Title', 'social-block' ),
+            type:   'string',
+            source: 'meta',
+            meta:   'blockswp_share_shareTitle'
         },
         showCounts: {
-            default: 0,
+            default: false,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showCounts'
         },
         showIcon: {
-            default: 1,
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showIcon'
         },
         iconSize :{
-            default: 32
+            default: 32,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_iconSize'
         },
         showFacebook: {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showFacebook'
         },
         showTwitter: {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showTwitter'
         },
         showWhatsapp : {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showWhatsapp'
         },
         showPinterest : {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showPinterest'
         },
         showLinkedin : {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showLinkedin'
         },
         showReditt : {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showReditt'
         },
         showTumblr : {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showTumblr'
         },
         showEmail : {
-            default: 1
+            default: true,
+            type:   'integer',
+            source: 'meta',
+            meta:   'blockswp_share_showEmail'
         }
     },
     edit({attributes, setAttributes, className, focus, id}) {
-        const settingsClassName = 'blockswp-share-block-setting';
+        const createChangeHandler = (attr) => {
+              return function (event) {
+                  let newValue = {};
+                  newValue[attr] = ! attributes[attr];
+                  setAttributes(newValue)
+              }
+        };
         return (
 			<div className={ className }>
                 {focus &&
@@ -62,109 +107,93 @@ registerBlockType( 'blockswp/share-block', {
                     <div className="blockswp-share-block-settings">
                         <div className="blockswp-share-block-settings-section">
                         	<strong class="blockswp-share-block-settings-section-title">Social Networks</strong>
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'Facebook', 'social-block')}</span>
-                                    <Checkbox
-	                                	checked={attributes.showFacebook}
-	                                    onChange={() => setAttributes({showFacebook:!attributes.showFacebook})}
-	                                />
-                                </label>
-                            </div>
+                            <Checkbox
+                                idAttr={`${id}-showFacebook`}
+                                label={__( 'Facebook', 'social-block') }
+                                change={createChangeHandler('showFacebook')}
+                                checked={attributes.showFacebook}
 
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'Twitter', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showTwitter}
-	                                    onChange={() => setAttributes({showTwitter:!attributes.showTwitter})}
-	                                />
-                                </label>
-                            </div>
+                            />
 
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'WhatsApp', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showWhatsapp}
-	                                    onChange={() => setAttributes({showWhatsapp:!attributes.showWhatsapp})}
-	                                />
-                                </label>
-                            </div>
+                            <Checkbox
+                                idAttr={`${id}-showTwitter`}
+                                label={__( 'Twitter', 'social-block') }
+                                change={createChangeHandler('showTwitter')}
+                                checked={attributes.showTwitter}
+                            />
 
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'Pintrest', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showPinterest}
-	                                    onChange={() => setAttributes({showPinterest:!attributes.showPinterest})}
-	                                />
-                                </label>
-                            </div>
+                            <Checkbox
+                                idAttr={`${id}-showWhatsapp`}
+                                label={__( 'WhatsApp', 'social-block') }
+                                change={createChangeHandler('showWhatsapp')}
+                                checked={attributes.showWhatsapp}
+                            />
 
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'LinkedIn', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showLinkedin}
-	                                    onChange={() => setAttributes({showLinkedin:!attributes.showLinkedin})}
-	                                />
-                                </label>
-                            </div>
+                            <Checkbox
+                                idAttr={`${id}-showLinkedin`}
+                                label={__( 'LinkedIn', 'social-block') }
+                                change={createChangeHandler('showLinkedin')}
+                                checked={attributes.showLinkedin}
+                            />
 
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'Reddit', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showReditt}
-	                                    onChange={() => setAttributes({showReditt:!attributes.showReditt})}
-	                                />
-                                </label>
-                            </div>
+                            <Checkbox
+                                idAttr={`${id}-showReditt`}
+                                label={__( 'Reddit', 'social-block') }
+                                change={createChangeHandler('showReditt')}
+                                checked={attributes.showReditt}
+                            />
 
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'Tumblr', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showTumblr}
-	                                    onChange={() => setAttributes({showTumblr:!attributes.showTumblr})}
-	                                />
-                                </label>
-                            </div>
+                            <Checkbox
+                                idAttr={`${id}-showTumblr`}
+                                label={__( 'Tumblr', 'social-block') }
+                                change={createChangeHandler('showTumblr')}
+                                checked={attributes.showTumblr}
+                            />
+
+                            <Checkbox
+                                idAttr={`${id}-showPinterest`}
+                                label={__( 'Pintrest', 'social-block') }
+                                change={createChangeHandler('showPinterest')}
+                                checked={attributes.showPinterest}
+                            />
+
+                            <Checkbox
+                                idAttr={`${id}-showEmail`}
+                                label={__( 'Email', 'social-block') }
+                                change={createChangeHandler('showEmail')}
+                                checked={attributes.showEmail}
+                            />
                         </div>
 
                         <div className="blockswp-share-block-settings-section">
-                        	<strong class="blockswp-share-block-settings-section-title">Options</strong>
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'Show Icons', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showIcon}
-	                                    onChange={() => setAttributes({showIcon:!attributes.showIcon})}
-	                                />
-                                </label>
-                            </div>
+                        	<strong class="blockswp-share-block-settings-section-title">
+                                { __( 'Options', 'social-block')}
+                            </strong>
+                            <Checkbox
+                                idAttr={`${id}-showIcons`}
+                                label={__( 'Show Icons', 'social-block') }
+                                change={createChangeHandler('showIcon')}
+                                checked={attributes.showIcon}
+                            />
 
-                            <div className={settingsClassName}>
-                                <label>
-                                    <span>{__( 'Show Counts', 'social-block')}</span>
-                                    <Checkbox
-	                                    checked={attributes.showCounts}
-	                                    onChange={() => setAttributes({showCounts:!attributes.showCounts})}
-	                                />
-                                </label>
-                            </div>
+                            <Checkbox
+                                idAttr={`${id}-showCounts`}
+                                label={__( 'Show Counts', 'social-block') }
+                                change={createChangeHandler('showCounts')}
+                                checked={attributes.showCounts}
+                            />
 
-                            <div className={settingsClassName}>
+
+                            <div className="blockswp-share-block-setting">
                                 <label
-                                    for="blockswp-share-block-show-icon-size"
+                                    htmlFor="blockswp-share-block-show-icon-size"
                                 >
                                     {__('Icon Size', 'social-block')}
                                 </label>
                                 <input
                                     id="blockswp-share-block-show-icon-size"
                                     type="number"
-                                    value={attributes.iconSize}
+                                    value={attributes.iconSize ? attributes.iconSize : 32 }
                                     min="32"
                                     max="96"
                                     step="32"
@@ -200,29 +229,11 @@ registerBlockType( 'blockswp/share-block', {
 		);
 
 	},
-
     save({attributes, className}) {
-	    const getAttr = ( attr, defaultValue ) => {
-            return attributes.hasOwnProperty( attr )
-                ? attributes[attr]
-                : defaultValue
-        };
-
-		return el(
-		    'div',
-            {
-                className: className,
-                showTwitter: getAttr( 'showFacebook', 1 ),
-                showFacebook: getAttr( 'showTwitter', 1 ),
-                showWhatsapp: getAttr( 'showWhatsapp', 1 ),
-                showPinterest: getAttr( 'showPinterest', 1 ),
-                showLinkedin: getAttr( 'showLinkedin', 1 ),
-                showReditt: getAttr( 'showReditt', 1 ),
-                showTumblr: getAttr( 'showTumblr', 1 ),
-                iconSize:getAttr( 'iconSize', 32 ),
-                showIcons: getAttr( 'showIcons', 1 ),
-                showCounts: getAttr( 'showCounts', 0 ),
-            }
-        )
+	    return (
+	        <div
+                className={className}
+            />
+        );
 	},
 } );

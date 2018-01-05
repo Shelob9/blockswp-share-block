@@ -3,47 +3,45 @@ import ReactDOM from 'react-dom';
 HTMLCollection.prototype.forEach = Array.prototype.forEach;
 NodeList.prototype.forEach = Array.prototype.forEach;
 
-document.addEventListener("DOMContentLoaded", function(event) {
+/** When DOM is ready, find the empty div that Gutenberg saved, and mount React component on it. **/
+document.addEventListener( 'DOMContentLoaded', function(event) {
     const selections = document.getElementsByClassName('wp-block-blockswp-share-block');
     function ucFirst(string)
     {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    selections.forEach( (element, i) =>{
-        let attributes = {};
-        Array.prototype.slice.call(element.attributes).forEach((item) => {
-            let attrName = item.name;
-            if( 0 === item.name.indexOf('show') ){
-                let split = item.name.toLowerCase().split('show');
-                attrName = `show${ucFirst(split[1])}`;
-                item.value = + item.value;
-            }else if( 'class' === item.name ){
-                 attrName = 'className';
-            }else if ( 'iconsize' === item.name ){
-                attrName = 'iconSize';
-                if( 'true' === item.value ){
-                    item.value = 32;
-                }
-                item.value = item.value.toString();
-            }
-
-            if( 'showIcons' === attrName ){
-                attrName = 'showIcon';
-                item.value = + item.value;
-            }
-            attributes[attrName]=item.value;
+    if ( 'object' === typeof  BLOCKSWP_SHARE_FRONT && selections.length) {
+        selections.forEach((element, i) => {
+            let attributes = JSON.parse(BLOCKSWP_SHARE_FRONT.post.data.blockswp_share);
+            attributes.shareUrl = BLOCKSWP_SHARE_FRONT.post.data.link;
+            attributes.shareTitle = BLOCKSWP_SHARE_FRONT.post.data.title.rendered;
+            new BlocksWPShareBlockFront(attributes, element);
         });
-
-        attributes.shareUrl = BLOCKSWP_SHARE_FRONT.post.data.link;
-        attributes.shareTitle = BLOCKSWP_SHARE_FRONT.post.data.title.rendered;
-        BlocksWPShareBlockFront(attributes,element);
-
-    });
+    }
 
 });
 
+/**
+ * Track number of components loaded so they can have unique IDs
+ *
+ * @todo remove this
+ *
+ * @since 1.0.0
+ *
+ * @type {number}
+ */
 let number = 1;
+
+/**
+ * Given a set of attributes and an HTML DOM node, put ShareView component on it using React DOM
+ *
+ * @since 1.0.0
+ *
+ * @param {*} attributes Attributes to pass to ShareView component
+ * @param parentEl DOM node to mount component on.
+ * @constructor
+ */
 function BlocksWPShareBlockFront(attributes,parentEl) {
     let Component = ShareView(attributes);
     let newElement = document.createElement('div');

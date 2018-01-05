@@ -3,26 +3,13 @@ import { Component } from 'react';
 export default class Checkbox extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isChecked: props.isChecked,
-            label: props.label
-        };
+
     }
     render(){
-        const toggleCheckboxChange = () => {
-            const { handleCheckboxChange, label } = this.props;
-            this.setState(({ isChecked }) => (
-                {
-                    isChecked: !isChecked,
-                }
-            ));
-
-            handleCheckboxChange(this.state.isChecked);
-        };
         return(
             <div className="blockswp-share-block-setting">
                 <label
-                    for={this.props.idAttr}
+                    htmlFor={this.props.idAttr}
                 >
                     {this.props.label}
                 </label>
@@ -31,7 +18,7 @@ export default class Checkbox extends Component {
                     type="checkbox"
                     value={this.props.checked}
                     checked={this.props.checked}
-                    onClick={this.props.toggleCheckboxChange}
+                    onClick={this.props.change}
                     />
             </div>
         )

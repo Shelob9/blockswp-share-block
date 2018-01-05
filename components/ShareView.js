@@ -1,5 +1,4 @@
 const { __ } = wp.i18n;
-import { Component } from 'react';
 import {
     Facebook,
     Twitter,
@@ -81,6 +80,7 @@ export const ShareView = (attributes) => {
                 >
                 </Tumblr>
             }
+
             {attributes.showPinterest &&
                 <Pintrest
                     shareUrl={attributes.shareUrl}
