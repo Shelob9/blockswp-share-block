@@ -152,7 +152,7 @@ registerBlockType( 'blockswp/share-block', {
 
                             <Checkbox
                                 idAttr={`${id}-showPinterest`}
-                                label={__( 'Pintrest', 'social-block') }
+                                label={__( 'Pinterest', 'social-block') }
                                 change={createChangeHandler('showPinterest')}
                                 checked={attributes.showPinterest}
                             />
