@@ -13,7 +13,8 @@ Social share block for the new Gutenberg post editor.
 == Description ==
 Super social share block for the new Gutenberg post editor.
 
-> A fun new plugin from [BlocksWP](https://blockswp.com/) - a partnership of [Caldera Labs](http://CalderLabs.org) and [Easily Amused](https://easilyamusedinc.com/).
+> A fun new plugin from [BlocksWP](https://blockswp.com/) - a partnership of [Caldera Labs](http://CalderLabs.org] and [Easily Amused](https://easilyamusedinc.com/).
+
 
 = Supported Networks =
 * Facebook
@@ -52,4 +53,4 @@ Super social share block for the new Gutenberg post editor.
 * Select which networks to show.
 * Set your other options.
 = Anthing thing else needed? =
-* No APIs needed, but you will need the Gutenberg plugin installed.
+* No APIs needed, but you will need the Gutenberg plugin installed first.
