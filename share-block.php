@@ -48,10 +48,10 @@ function blockswp_share_block_init(){
     }
 
     //Add one REST API field with all of the settings
+
     register_rest_field( 'post', 'blockswp_share', array(
         'get_callback' => 'blockswp_share_block_extra_rest_field_callback'
     ) );
-
 }
 
 /**

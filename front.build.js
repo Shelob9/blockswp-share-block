@@ -4684,6 +4684,9 @@ var __ = wp.i18n.__;
 
 
 var ShareView = function ShareView(attributes) {
+    if (!attributes.iconSize) {
+        attributes.iconSize = 32;
+    }
     return wp.element.createElement(
         "div",
         { className: "wp-block-blockswp-share-blocks" },

@@ -11,6 +11,9 @@ import {
 } from "./SocialComponents";
 
 export const ShareView = (attributes) => {
+    if( ! attributes.iconSize ){
+        attributes.iconSize = 32;
+    }
     return(
         <div className="wp-block-blockswp-share-blocks">
             {attributes.showFacebook &&
