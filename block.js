@@ -18,12 +18,17 @@ registerBlockType( 'blockswp/share-block', {
     single: true,
 	attributes: blockAttributes,
     edit({attributes, setAttributes, className, focus, id}) {
-
-
+        /** If attributes.iconSize is false, this is a new post, reset to defaults
+         This is a workaround for https://github.com/WordPress/gutenberg/issues/4494**/
 	    if( ! attributes.iconSize ){
 	        setAttributes(getDefaults());
         }
 
+        /**
+         * Creates functions for change events for settings to update block attributes
+         * @param attr
+         * @returns {Function}
+         */
         const createChangeHandler = (attr) => {
               return function (event) {
                   let newValue = {};
@@ -31,6 +36,7 @@ registerBlockType( 'blockswp/share-block', {
                   setAttributes(newValue)
               }
         };
+
         return (
 			<div className={ className }>
                 {focus &&

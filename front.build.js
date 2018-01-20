@@ -4686,6 +4686,7 @@ var __ = wp.i18n.__;
 
 
 var ShareView = function ShareView(attributes) {
+    //Workaround for https://github.com/WordPress/gutenberg/issues/4494
     if (!attributes.iconSize) {
         attributes = Object(__WEBPACK_IMPORTED_MODULE_1__blockAttributes__["b" /* getDefaults */])();
     }
