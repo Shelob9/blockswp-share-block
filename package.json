@@ -1,6 +1,6 @@
 {
   "name": "blockswp-share-block",
-  "version": "1.0.0-b-2",
+  "version": "1.0.1-b-1",
   "main": "block.js",
   "devDependencies": {
     "babel-core": "^6.25.0",

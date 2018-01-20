@@ -4,7 +4,7 @@ Plugin Name: Share Block by BlocksWP.com
 Plugin URI: https://BlocksWP.com/social-block
 Description: Social share block for the WordPress Gutenberg block editor
 Author: BlocksWP.com
-Version: 1.0.0
+Version: 1.0.1-b-1
 Text Domain: share-block
 Author URI: https://BlocksWP.com
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-define( 'WP_BLOCKS_SHARE_BLOCK', '1.0.0' );
+define( 'WP_BLOCKS_SHARE_BLOCK', '1.0.1-b-1' );
 
 /**
  * Make plugin go
