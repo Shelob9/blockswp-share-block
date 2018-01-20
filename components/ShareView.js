@@ -9,10 +9,11 @@ import {
     Tumblr,
     Pintrest
 } from "./SocialComponents";
+import {getDefaults} from "./blockAttributes";
 
 export const ShareView = (attributes) => {
     if( ! attributes.iconSize ){
-        attributes.iconSize = 32;
+        attributes = getDefaults();
     }
     return(
         <div className="wp-block-blockswp-share-blocks">
