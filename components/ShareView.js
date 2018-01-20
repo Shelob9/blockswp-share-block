@@ -9,8 +9,13 @@ import {
     Tumblr,
     Pintrest
 } from "./SocialComponents";
+import {getDefaults} from "./blockAttributes";
 
 export const ShareView = (attributes) => {
+    //Workaround for https://github.com/WordPress/gutenberg/issues/4494
+    if( ! attributes.iconSize ){
+        attributes = getDefaults();
+    }
     return(
         <div className="wp-block-blockswp-share-blocks">
             {attributes.showFacebook &&

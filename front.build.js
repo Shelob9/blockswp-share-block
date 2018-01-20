@@ -4679,11 +4679,17 @@ module.exports = react;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShareView; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SocialComponents__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__blockAttributes__ = __webpack_require__(150);
 var __ = wp.i18n.__;
 
 
 
+
 var ShareView = function ShareView(attributes) {
+    //Workaround for https://github.com/WordPress/gutenberg/issues/4494
+    if (!attributes.iconSize) {
+        attributes = Object(__WEBPACK_IMPORTED_MODULE_1__blockAttributes__["b" /* getDefaults */])();
+    }
     return wp.element.createElement(
         "div",
         { className: "wp-block-blockswp-share-blocks" },
@@ -25423,6 +25429,105 @@ function camelize(string) {
 }
 
 module.exports = camelize;
+
+/***/ }),
+/* 150 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return blockAttributes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getDefaults; });
+var __ = wp.i18n.__;
+
+
+var blockAttributes = {
+    shareUrl: {
+        default: 'https://via.placeholder.com/35',
+        type: 'string',
+        source: 'meta',
+        meta: 'blockswp_share_shareUrl'
+    },
+    shareTitle: {
+        default: __('Post Title', 'social-block'),
+        type: 'string',
+        source: 'meta',
+        meta: 'blockswp_share_shareTitle'
+    },
+    showCounts: {
+        default: false,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showCounts'
+    },
+    showIcon: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showIcon'
+    },
+    iconSize: {
+        default: 32,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_iconSize'
+    },
+    showFacebook: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showFacebook'
+    },
+    showTwitter: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showTwitter'
+    },
+    showWhatsapp: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showWhatsapp'
+    },
+    showPinterest: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showPinterest'
+    },
+    showLinkedin: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showLinkedin'
+    },
+    showReditt: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showReditt'
+    },
+    showTumblr: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showTumblr'
+    },
+    showEmail: {
+        default: true,
+        type: 'integer',
+        source: 'meta',
+        meta: 'blockswp_share_showEmail'
+    }
+};
+
+var getDefaults = function getDefaults() {
+    var newState = {};
+    Object.keys(blockAttributes).forEach(function (attr) {
+        newState[attr] = blockAttributes[attr].default;
+    });
+    return newState;
+};
 
 /***/ })
 /******/ ]);

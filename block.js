@@ -2,6 +2,9 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const el = wp.element.createElement;
 const BlockControls = wp.blocks.BlockControls;
+
+import {blockAttributes,getDefaults} from "./components/blockAttributes";
+
 import { Component } from 'react'
 
 import { ShareView } from './components/ShareView';
@@ -12,87 +15,20 @@ registerBlockType( 'blockswp/share-block', {
 	title: __( 'Social Share', 'social-block' ),
 	icon: 'networking',
 	category: 'common',
-	attributes: {
-        shareUrl: {
-        	default: 'https://via.placeholder.com/35',
-            type:   'string',
-            source: 'meta',
-            meta:   'blockswp_share_shareUrl'
-        },
-        shareTitle: {
-            default: __( 'Post Title', 'social-block' ),
-            type:   'string',
-            source: 'meta',
-            meta:   'blockswp_share_shareTitle'
-        },
-        showCounts: {
-            default: false,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showCounts'
-        },
-        showIcon: {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showIcon'
-        },
-        iconSize :{
-            default: 32,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_iconSize'
-        },
-        showFacebook: {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showFacebook'
-        },
-        showTwitter: {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showTwitter'
-        },
-        showWhatsapp : {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showWhatsapp'
-        },
-        showPinterest : {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showPinterest'
-        },
-        showLinkedin : {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showLinkedin'
-        },
-        showReditt : {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showReditt'
-        },
-        showTumblr : {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showTumblr'
-        },
-        showEmail : {
-            default: true,
-            type:   'integer',
-            source: 'meta',
-            meta:   'blockswp_share_showEmail'
-        }
-    },
+    single: true,
+	attributes: blockAttributes,
     edit({attributes, setAttributes, className, focus, id}) {
+        /** If attributes.iconSize is false, this is a new post, reset to defaults
+         This is a workaround for https://github.com/WordPress/gutenberg/issues/4494**/
+	    if( ! attributes.iconSize ){
+	        setAttributes(getDefaults());
+        }
+
+        /**
+         * Creates functions for change events for settings to update block attributes
+         * @param attr
+         * @returns {Function}
+         */
         const createChangeHandler = (attr) => {
               return function (event) {
                   let newValue = {};
@@ -100,6 +36,7 @@ registerBlockType( 'blockswp/share-block', {
                   setAttributes(newValue)
               }
         };
+
         return (
 			<div className={ className }>
                 {focus &&
